@@ -21,6 +21,6 @@ GitHub serves a user site and project sites side by side, so this repo never cha
 ## Prices shown
 
 - MatricX PRO and MatricX Bake: $49 launch price, regular $79.
-- MatricX Bundle: "From $119" (the Creator tier on the Bundle page).
+- MatricX Bundle: "From $67.58" launch price, regular $109 (Creator tier, as on the Blender Market listing).
 
 Update these lines in `index.html` when prices change.
