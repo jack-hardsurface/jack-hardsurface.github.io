@@ -3,154 +3,395 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Eidos Edge — MatricX Add-ons for Blender</title>
-<meta name="description" content="Eidos Edge makes Blender add-ons for hard-surface artists: MatricX PRO for fast, layered materials and MatricX Bake for game-ready texture sets.">
-<meta property="og:title" content="Eidos Edge — MatricX Add-ons for Blender">
-<meta property="og:description" content="Texture fast with MatricX PRO. Bake and ship with MatricX Bake.">
-<meta property="og:image" content="assets/pro-card.jpg">
+<title>MatricX PRO + MatricX Bake — Texture Faster, Ship Finished Assets</title>
+<meta name="description" content="MatricX PRO builds realistic, layered materials in Blender. MatricX Bake turns them into game-ready PBR texture sets. The complete surface pipeline for hard-surface artists.">
+<meta property="og:title" content="Stop Wasting Hours on Textures. Ship Finished Assets.">
+<meta property="og:description" content="MatricX PRO + MatricX Bake for Blender 4.5–5.2. Launch sale: 38% off.">
+<meta property="og:image" content="https://jack-hardsurface.github.io/MatricX-Pro-Page/assets/pro-thumbnail.jpg?v=1">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css">
+<style>
+:root {
+  --bg: #0a0a0a;
+  --panel: #141414;
+  --panel-hover: #1a1a1a;
+  --line: #2a2a2a;
+  --text: #d1d1d1;
+  --muted: #a0a0a0;
+  --head: #ffffff;
+  --orange: #f26722;
+  --orange-hover: #ff8a4c;
+  --green: #69f0ae;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 56px; }
+body { background: var(--bg); color: var(--text); font-family: 'Inter', -apple-system, sans-serif; font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: var(--orange); }
+b, strong { color: #f0f0f0; font-weight: 600; }
+.page { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+h1, h2, h3 { font-family: 'Anton', Impact, sans-serif; font-weight: 400; text-transform: uppercase; color: var(--head); letter-spacing: .5px; line-height: 1.08; }
+.kicker { color: var(--green); font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 14px; }
+.kicker::before { content: ""; width: 20px; height: 2px; background: var(--green); }
+.orange { color: var(--orange); }
+section { padding: 80px 0; border-top: 1px solid var(--line); }
+.section-head { text-align: center; margin-bottom: 44px; }
+.section-head h2 { font-size: clamp(30px, 4.4vw, 44px); margin-bottom: 12px; }
+.section-head p { color: #8f8f8f; max-width: 640px; margin: 0 auto; }
+
+/* 1. Urgency banner (sticky) */
+.urgency { position: sticky; top: 0; z-index: 30; display: flex; align-items: center; justify-content: center; min-height: 44px; padding: 8px 16px;
+  background: var(--orange); color: #111; text-align: center; font-weight: 800; font-size: 15px; text-decoration: none; letter-spacing: .2px; }
+.urgency:hover { background: var(--orange-hover); }
+.urgency span { text-decoration: underline; text-underline-offset: 3px; margin-left: 8px; }
+.urgency:focus-visible { outline: 3px solid #111; outline-offset: -3px; }
+
+/* Header */
+.header { display: flex; align-items: center; gap: 20px; max-width: 1080px; margin: 0 auto; padding: 16px 20px; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--head); text-decoration: none; font-family: 'Anton', Impact, sans-serif; font-size: 20px; text-transform: uppercase; }
+.brand img { width: 30px; height: 30px; border-radius: 6px; }
+.brand span { color: var(--orange); }
+.nav { display: flex; gap: 22px; margin-left: auto; }
+.nav a { color: #9a9a9a; text-decoration: none; font-size: 14px; font-weight: 500; }
+.nav a:hover { color: var(--head); }
+
+/* Buttons (all at least 44px tall) */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 44px; padding: 16px 32px; border-radius: 4px; border: none; cursor: pointer;
+  background: var(--orange); color: #000; font-weight: 800; font-size: 16px; text-transform: uppercase; letter-spacing: .3px; text-decoration: none;
+  box-shadow: 0 4px 15px rgba(242,103,34,.3); transition: background .2s, transform .2s, box-shadow .2s; }
+.btn:hover { background: var(--orange-hover); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(242,103,34,.45); }
+.btn:focus-visible, .ghost:focus-visible, .text-link:focus-visible, .nav a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+.btn-xl { font-size: 19px; padding: 22px 44px; }
+.ghost { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 12px 24px; border: 1px solid #3a3a3a; border-radius: 4px;
+  color: var(--head); text-decoration: none; font-weight: 700; font-size: 15px; transition: border-color .2s, color .2s; }
+.ghost:hover { border-color: var(--green); color: var(--green); }
+.text-link { display: inline-flex; align-items: center; min-height: 44px; color: #bdbdbd; font-weight: 600; text-decoration: none; border-bottom: 1px dashed #555; }
+.text-link:hover { color: var(--head); border-color: var(--head); }
+
+/* 2. Hero */
+.hero { text-align: center; padding: 56px 0 64px; border-top: none; }
+.hero h1 { font-size: clamp(38px, 7.4vw, 82px); max-width: 980px; margin: 0 auto 22px; }
+.hero h1 .orange { display: block; }
+.hero .sub { font-size: 18.5px; color: var(--muted); max-width: 720px; margin: 0 auto 38px; }
+.hero .sub b { color: var(--head); }
+.showcase { max-width: 980px; margin: 0 auto 36px; aspect-ratio: 16 / 9; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: #111;
+  box-shadow: 0 24px 70px rgba(0,0,0,.6), 0 0 0 1px rgba(242,103,34,.08); }
+.showcase img { width: 100%; height: 100%; object-fit: cover; }
+.hero-ctas { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.hero-ctas .note { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--green); letter-spacing: 1px; }
+
+/* 3. Trust strip */
+.trust { padding: 36px 0; background: linear-gradient(90deg, rgba(105,240,174,.05), rgba(105,240,174,.02)); }
+.trust-inner { display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: center; max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+.stars { color: var(--green); font-size: 26px; letter-spacing: 4px; line-height: 1; }
+.trust-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 1.5px; color: #8f8f8f; text-transform: uppercase; margin-top: 8px; }
+.quotes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.quote { margin: 0; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; }
+.quote blockquote { margin: 0 0 8px; color: #dcdcdc; font-size: 14.5px; line-height: 1.55; }
+.quote figcaption { font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: var(--green); }
+
+/* 4. Product grid */
+.products { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+.product { display: flex; flex-direction: column; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.product .media { aspect-ratio: 2 / 1; background: #000; border-bottom: 1px solid var(--line); }
+.product .media img { width: 100%; height: 100%; object-fit: contain; }
+.product .body { padding: 24px 26px 26px; display: flex; flex-direction: column; flex: 1; }
+.product h3 { font-size: 28px; margin-bottom: 10px; }
+.product h3 span { color: var(--orange); }
+.product p { color: var(--muted); font-size: 15.5px; flex: 1; margin-bottom: 20px; }
+.product .links { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* 5. Pricing */
+.pricing { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr) minmax(0, 1fr); gap: 18px; align-items: stretch; }
+.plan { position: relative; display: flex; flex-direction: column; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 28px 24px; text-align: center; }
+.plan.featured { border: 2px solid var(--orange); background: #151210; box-shadow: 0 24px 70px rgba(242,103,34,.2); transform: translateY(-8px); }
+.plan .badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--orange); color: #111; white-space: nowrap;
+  font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 2px; padding: 6px 12px; border-radius: 4px; }
+.plan h3 { font-size: 26px; margin-bottom: 14px; }
+.plan .price { display: flex; align-items: baseline; justify-content: center; gap: 12px; margin-bottom: 4px; }
+.plan .price .now { font-family: 'Anton', Impact, sans-serif; font-size: 54px; color: var(--head); line-height: 1; }
+.plan .price .was { font-size: 22px; color: #6f6f6f; text-decoration: line-through; font-weight: 600; }
+.plan .save { font-family: 'JetBrains Mono', monospace; font-size: 11.5px; font-weight: 700; letter-spacing: 1px; color: var(--green); margin-bottom: 18px; }
+.plan ul { list-style: none; text-align: left; margin: 0 0 24px; flex: 1; border-top: 1px solid var(--line); padding-top: 16px; }
+.plan li { position: relative; padding-left: 24px; margin-bottom: 9px; font-size: 14.5px; color: #cfcfcf; }
+.plan li::before { content: "\2713"; position: absolute; left: 0; color: var(--green); font-weight: 800; }
+.plan .btn { width: 100%; }
+.plan.featured .btn { padding: 20px 24px; font-size: 18px; }
+.plan .tiers { margin-top: 12px; font-size: 13px; color: #8f8f8f; }
+.plan .tiers a { color: #bdbdbd; }
+.pricing-note { text-align: center; margin-top: 30px; font-size: 13.5px; color: #8a8a8a; }
+
+/* 6. FAQ */
+.faq { max-width: 780px; margin: 0 auto; }
+.faq details { border: 1px solid var(--line); border-radius: 8px; background: var(--panel); margin-bottom: 10px; }
+.faq summary { cursor: pointer; list-style: none; min-height: 56px; padding: 16px 22px; font-weight: 600; color: var(--head); font-size: 16px;
+  display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font-family: 'JetBrains Mono', monospace; color: var(--orange); font-size: 22px; transition: transform .2s; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq summary:focus-visible { outline: 2px solid var(--green); outline-offset: -2px; border-radius: 8px; }
+.faq .answer { padding: 0 22px 20px; color: var(--muted); font-size: 15px; }
+.faq .answer p + p { margin-top: 10px; }
+
+/* Final CTA + footer */
+.final { text-align: center; }
+.final h2 { font-size: clamp(34px, 5vw, 52px); margin-bottom: 16px; }
+.final p { color: var(--muted); margin-bottom: 28px; }
+footer { text-align: center; padding: 40px 20px 48px; border-top: 1px solid var(--line); font-size: 13px; color: #666; font-family: 'JetBrains Mono', monospace; }
+footer p { margin-bottom: 10px; }
+footer a { color: #8a8a8a; text-decoration: none; }
+footer a:hover { color: var(--orange); }
+
+/* 7. Mobile buy bar */
+.buybar { display: none; }
+@media (max-width: 860px) {
+  .nav { display: none; }
+  .trust-inner { grid-template-columns: 1fr; text-align: center; gap: 18px; }
+  .quotes, .products, .pricing { grid-template-columns: 1fr; }
+  .plan.featured { transform: none; order: -1; }
+  .hero { padding: 40px 0 48px; }
+  .hero .sub { font-size: 16.5px; }
+  .btn-xl { font-size: 17px; padding: 20px 24px; width: 100%; }
+  section { padding: 60px 0; }
+  .buybar { display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; gap: 12px; align-items: center; justify-content: space-between;
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom)); background: rgba(10,10,10,.95); backdrop-filter: blur(8px); border-top: 1px solid var(--line); }
+  .buybar .p { font-size: 13.5px; color: var(--muted); line-height: 1.3; }
+  .buybar .p b { color: var(--head); font-size: 18px; }
+  .buybar .p s { color: #777; }
+  .buybar .btn { padding: 12px 18px; font-size: 14px; box-shadow: none; }
+  body { padding-bottom: 76px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .btn, .faq summary::after { transition: none; }
+  .btn:hover { transform: none; }
+}
+</style>
 </head>
 <body>
 
-<header class="topbar">
-  <div class="topbar-inner">
-    <a class="brand" href="#top"><img src="assets/logo.png" alt=""> Eidos <span>Edge</span></a>
-    <nav class="nav" aria-label="Site">
-      <a href="#products">Add-ons</a>
-      <a href="#bundle">Bundle</a>
-      <a href="#together">Workflow</a>
-      <a href="#learn">Tutorials</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </div>
+<!-- STORE LINKS: Superhive (Blender Market) pages. Replace a URL here if a listing moves. -->
+<!--   Bundle: https://superhivemarket.com/products/matricx-bundle-save-30---complete-material--baking-system -->
+<!--   PRO:    https://superhivemarket.com/products/matricx-pro-one-click-realistic-texture -->
+<!--   Bake:   https://superhivemarket.com/products/matricx-bake-game-ready-texture-blender -->
+
+<!-- 1. URGENCY BANNER -->
+<a class="urgency" href="https://superhivemarket.com/products/matricx-bundle-save-30---complete-material--baking-system" target="_blank" rel="noopener">
+  &#9889; LAUNCH SALE: Save 38% on the MatricX Bundle. Limited Time Only.<span>Get it</span>
+</a>
+
+<header class="header">
+  <a class="brand" href="#top"><img src="assets/logo.png" alt=""> Eidos <span>Edge</span></a>
+  <nav class="nav" aria-label="Page sections">
+    <a href="#products">Add-ons</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
+  </nav>
 </header>
 
 <div class="page" id="top">
 
+  <!-- 2. HERO -->
   <section class="hero">
-    <div class="kicker center">Blender add-ons by Eidos Edge</div>
-    <h1>Texture Faster.<br><span class="orange-text">Ship Anywhere.</span></h1>
-    <p class="hero-sub">
-      Two add-ons for hard-surface artists in Blender. <b>MatricX PRO</b> gives your models a finished, used surface in minutes.
-      <b>MatricX Bake</b> turns those materials into texture sets any engine can read.
-    </p>
-    <div class="cta-row">
-      <a href="#products" class="btn">See the add-ons</a>
+    <div class="kicker">MatricX PRO 2.1 + MatricX Bake 1.7.8</div>
+    <h1>Stop Wasting Hours on Textures. <span class="orange">Ship Finished Assets.</span></h1>
+    <p class="sub"><b>MatricX PRO</b> builds photorealistic materials in Blender. <b>MatricX Bake</b> turns them into game-ready textures.
+      The complete pipeline for hard-surface artists.</p>
+
+    <div class="showcase">
+      <!-- PLACEHOLDER: hero-showcase.gif (16:9, e.g. 1600x900). Replace the img src below. Until then it shows a MatricX PRO render. -->
+      <img src="https://jack-hardsurface.github.io/MatricX-Pro-Page/assets/hero-after.jpg" width="1600" height="900"
+           alt="A weapon model finished with MatricX PRO materials and imperfection layers.">
+    </div>
+
+    <div class="hero-ctas">
+      <a class="btn btn-xl" href="https://superhivemarket.com/products/matricx-bundle-save-30---complete-material--baking-system" target="_blank" rel="noopener">Get the Bundle &mdash; $67.58 (Save 38%)</a>
+      <span class="note">Launch price &middot; regular $109</span>
+      <a class="text-link" href="#pricing">Or buy individually &darr;</a>
     </div>
   </section>
+</div>
 
+<!-- 3. TRUST STRIP: real customer reviews, quoted word for word -->
+<section class="trust" aria-label="Customer reviews">
+  <div class="trust-inner">
+    <div>
+      <div class="stars" role="img" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <div class="trust-label">5-star customer reviews</div>
+    </div>
+    <div class="quotes">
+      <figure class="quote">
+        <blockquote>&ldquo;A fantastic add on, made even better with the Pro version. Super easy to use, with great results.&rdquo;</blockquote>
+        <figcaption>&mdash; Anonymous</figcaption>
+      </figure>
+      <figure class="quote">
+        <blockquote>&ldquo;Amazing addon! had a problem installing the assetpack on Linux. Eidosedge responded and fix the problem completely within a couple of hours. Very good support!&rdquo;</blockquote>
+        <figcaption>&mdash; firsthill</figcaption>
+      </figure>
+      <figure class="quote">
+        <blockquote>&ldquo;very easy to use specially for me whos a noob when it comes Materials and shader nodes.&rdquo;</blockquote>
+        <figcaption>&mdash; Eriko Pedojan</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<div class="page">
+
+  <!-- 4. PRODUCT GRID -->
   <section id="products">
     <div class="section-head">
-      <div class="kicker center">The add-ons</div>
-      <h2>Pick Your Tool</h2>
+      <div class="kicker">Two add-ons, one pipeline</div>
+      <h2>Build the Surface. <span class="orange">Bake It. Ship It.</span></h2>
     </div>
     <div class="products">
-
       <article class="product">
-        <div class="media fit"><img src="https://jack-hardsurface.github.io/MatricX-Pro-Page/assets/pro-thumbnail.jpg?v=1" width="1200" height="600" loading="lazy"
-             alt="MatricX PRO 2.1: a weathered helicopter rotor hub finished with MatricX materials, beside the MatricX PRO panel."></div>
+        <div class="media">
+          <!-- PLACEHOLDER: pro-feature.png (2:1, e.g. 1200x600). Replace the img src below. Until then it shows the MatricX PRO thumbnail. -->
+          <img src="https://jack-hardsurface.github.io/MatricX-Pro-Page/assets/pro-thumbnail.jpg?v=1" width="1200" height="600" loading="lazy"
+               alt="MatricX PRO 2.1: a weathered rotor hub finished with MatricX materials, beside the MatricX PRO panel.">
+        </div>
         <div class="body">
-          <h3>MatricX <span>PRO</span></h3>
-          <div class="role">Texture &middot; Version 2.1</div>
-          <p class="price-tag"><s>$79</s><b>$49</b>launch price</p>
-          <p>Ready-made materials and layered imperfections. No texture painting, no node graphs to build.</p>
-          <ul class="ticks">
-            <li>70 ready-made materials in 9 families</li>
-            <li>16 stackable imperfection types, with paint masks</li>
-            <li>Decals, trim sheets and three pie menus</li>
-          </ul>
+          <h3>MatricX PRO: <span>The Surface System</span></h3>
+          <p>Layer 16 imperfection types, decals and paint masks over 70 ready-made materials. No node graphs. No UV unwrapping for most materials.</p>
           <div class="links">
-            <a class="btn" href="https://jack-hardsurface.github.io/MatricX-Pro-Page/">Explore MatricX PRO</a>
-            <a class="btn-ghost" href="https://jack-hardsurface.github.io/MatricX-Pro-Page/docs/">Docs</a>
+            <a class="btn" href="https://jack-hardsurface.github.io/MatricX-Pro-Page/">Explore PRO</a>
+            <a class="ghost" href="https://jack-hardsurface.github.io/MatricX-Pro-Page/docs/">User guide</a>
           </div>
         </div>
       </article>
-
       <article class="product">
-        <div class="media fit"><img src="https://jack-hardsurface.github.io/MatricX-Bake-Page/hero/bake-thumbnail.png?v=2" width="1200" height="600" loading="lazy"
-             alt="MatricX Bake 1.7.8: a fire hydrant split into its baked color, metallic, roughness and normal maps."></div>
+        <div class="media">
+          <!-- PLACEHOLDER: bake-feature.png (2:1, e.g. 1200x600). Replace the img src below. Until then it shows the MatricX Bake thumbnail. -->
+          <img src="https://jack-hardsurface.github.io/MatricX-Bake-Page/hero/bake-thumbnail.png?v=2" width="1200" height="600" loading="lazy"
+               alt="MatricX Bake 1.7.8: a fire hydrant split into its baked color, metallic, roughness and normal maps.">
+        </div>
         <div class="body">
-          <h3>MatricX <span>Bake</span></h3>
-          <div class="role">Bake &amp; export &middot; Version 1.7.8</div>
-          <p class="price-tag"><s>$79</s><b>$49</b>launch price</p>
-          <p>Bake materials and decals into clean PBR texture sets, then export the asset for your engine.</p>
-          <ul class="ticks">
-            <li>9 map types, ORM / ARM / RMA packing, up to 8K</li>
-            <li>One Texture Set for a whole collection</li>
-            <li>FBX and GLB export for Unity, Unreal and Godot</li>
-          </ul>
+          <h3>MatricX Bake: <span>Game-Ready</span></h3>
+          <p>Bake your MatricX materials into clean PBR texture sets for Unity, Unreal or Godot &mdash; one object, a whole collection, or one shared atlas.</p>
           <div class="links">
-            <a class="btn" href="https://jack-hardsurface.github.io/MatricX-Bake-Page/">Explore MatricX Bake</a>
-            <a class="btn-ghost" href="https://jack-hardsurface.github.io/MatricX-Bake-Page/MatricX-Bake-User-Guide.html">Guide</a>
+            <a class="btn" href="https://jack-hardsurface.github.io/MatricX-Bake-Page/">Explore Bake</a>
+            <a class="ghost" href="https://jack-hardsurface.github.io/MatricX-Bake-Page/MatricX-Bake-User-Guide.html">User guide</a>
           </div>
         </div>
       </article>
-
     </div>
+  </section>
 
-    <article class="product bundle" id="bundle">
-      <div class="media"><img src="https://jack-hardsurface.github.io/MatricX-Bundle-Page/vector%202.0.jpg" loading="lazy"
-           alt="MatricX Bundle: MatricX PRO and MatricX Bake together."></div>
-      <div class="body">
-        <h3>MatricX <span>Bundle</span></h3>
-        <div class="role">MatricX PRO + MatricX Bake &middot; Best value</div>
-        <p>Both add-ons in one purchase: build the surface in MatricX PRO, bake it clean in MatricX Bake, ship it to your engine.</p>
-        <ul class="ticks">
-          <li>The complete MatricX PRO and MatricX Bake, with lifetime updates</li>
-          <li>Four tiers, from a single creator to a studio team &mdash; 38% off at launch</li>
+  <!-- 5. PRICING -->
+  <section id="pricing">
+    <div class="section-head">
+      <div class="kicker">Launch sale &middot; 38% off</div>
+      <h2>Pick Your <span class="orange">Pipeline</span></h2>
+      <p>Buy one add-on, or get both in the bundle for less than buying them separately.</p>
+    </div>
+    <div class="pricing">
+      <div class="plan">
+        <h3>MatricX PRO</h3>
+        <div class="price"><span class="now">$49</span><span class="was">$79</span></div>
+        <div class="save">LAUNCH PRICE &middot; SAVE 38%</div>
+        <ul>
+          <li>70 materials</li>
+          <li>16 imperfection types</li>
+          <li>Decals</li>
+          <li>Trim sheets</li>
         </ul>
-        <p class="price-tag">From <s>$109</s><b>$67.58</b>launch price</p>
-        <div class="links">
-          <a class="btn" href="https://jack-hardsurface.github.io/MatricX-Bundle-Page/">Explore the Bundle</a>
-        </div>
+        <a class="btn" href="https://superhivemarket.com/products/matricx-pro-one-click-realistic-texture" target="_blank" rel="noopener">Get PRO</a>
       </div>
-    </article>
+
+      <div class="plan featured">
+        <span class="badge">BEST VALUE</span>
+        <h3>The MatricX Bundle</h3>
+        <div class="price"><span class="now">$67.58</span><span class="was">$109</span></div>
+        <div class="save">LAUNCH PRICE &middot; SAVE 38%</div>
+        <ul>
+          <li>Everything in MatricX PRO</li>
+          <li>Everything in MatricX Bake</li>
+          <li>Lifetime updates</li>
+        </ul>
+        <a class="btn" href="https://superhivemarket.com/products/matricx-bundle-save-30---complete-material--baking-system" target="_blank" rel="noopener">Get the Bundle</a>
+        <div class="tiers">Creator tier. Pro, Studio and Enterprise tiers on the <a href="https://jack-hardsurface.github.io/MatricX-Bundle-Page/#tiers">Bundle page</a>.</div>
+      </div>
+
+      <div class="plan">
+        <h3>MatricX Bake</h3>
+        <div class="price"><span class="now">$49</span><span class="was">$79</span></div>
+        <div class="save">LAUNCH PRICE &middot; SAVE 38%</div>
+        <ul>
+          <li>One Texture Set</li>
+          <li>FBX / GLB export</li>
+          <li>ORM packing</li>
+        </ul>
+        <a class="btn" href="https://superhivemarket.com/products/matricx-bake-game-ready-texture-blender" target="_blank" rel="noopener">Get Bake</a>
+      </div>
+    </div>
+    <p class="pricing-note">Prices on Blender Market (Superhive). Launch prices are temporary; the price you pay is the one shown at checkout.</p>
   </section>
 
-  <section id="together">
+  <!-- 6. FAQ -->
+  <section id="faq">
     <div class="section-head">
-      <div class="kicker center">Better together</div>
-      <h2>From Blockout <span class="orange-text">to Engine</span></h2>
-      <p>Each add-on works on its own. Together they cover the whole surface pipeline.</p>
+      <div class="kicker">FAQ</div>
+      <h2>Questions, Answered</h2>
     </div>
-    <div class="pipeline">
-      <div class="pipe"><div class="who">MatricX PRO</div><h3>Texture</h3><p>Apply a material, stack Edge Wear, Dirt or Rust, paint where wear goes, add decals.</p></div>
-      <div class="arrow" aria-hidden="true">&rarr;</div>
-      <div class="pipe"><div class="who">MatricX Bake</div><h3>Bake</h3><p>Bake every layer and decal into one PBR texture set for the whole asset.</p></div>
-      <div class="arrow" aria-hidden="true">&rarr;</div>
-      <div class="pipe"><div class="who">MatricX Bake</div><h3>Ship</h3><p>Export FBX or GLB with its textures, ready for Unity, Unreal or Godot.</p></div>
+    <div class="faq">
+      <details>
+        <summary>Do I need UVs?</summary>
+        <div class="answer">
+          <p><b>MatricX PRO:</b> not for most materials, and never for imperfection layers. Fabrics need a UV map &mdash; MatricX creates one in a click. Trim sheets write the UVs for the faces you select.</p>
+          <p><b>MatricX Bake:</b> baking writes into a UV layout, so Bake prepares it for you: Prepare UVs unwraps, and Auto-Fix Bake UVs creates a clean bake UV beside your own without replacing it.</p>
+        </div>
+      </details>
+      <details>
+        <summary>Does Bake work with PRO?</summary>
+        <div class="answer"><p>Yes. MatricX Bake has built-in support for MatricX PRO 2.1: all 16 imperfection types, every material family, its glass and its trim sheets. It also bakes any other Blender material.</p></div>
+      </details>
+      <details>
+        <summary>What Blender versions are supported?</summary>
+        <div class="answer"><p>Blender 4.5 and newer, tested on 4.5, 5.1 and 5.2. One build for Windows, macOS and Linux.</p></div>
+      </details>
+      <details>
+        <summary>Do you offer refunds?</summary>
+        <div class="answer"><p>Payment, downloads and refunds are handled by the store you buy from, under that store's refund policy. If something doesn't work, contact us first at <a href="mailto:contact.eidosedge@gmail.com">contact.eidosedge@gmail.com</a> &mdash; most problems are solved quickly.</p></div>
+      </details>
     </div>
   </section>
 
-  <section id="learn">
-    <div class="section-head">
-      <div class="kicker center">Learn &amp; follow</div>
-      <h2>Tutorials and Work</h2>
-    </div>
-    <div class="socials">
-      <a class="social" href="https://www.youtube.com/@MatricX-blender" target="_blank" rel="noopener"><span class="name">YouTube</span><span class="what">MatricX tutorials</span></a>
-      <a class="social" href="https://youtube.com/@EidosEdge" target="_blank" rel="noopener"><span class="name">YouTube</span><span class="what">Eidos Edge channel</span></a>
-      <a class="social" href="https://www.artstation.com/prasantheidos" target="_blank" rel="noopener"><span class="name">ArtStation</span><span class="what">Portfolio</span></a>
-      <a class="social" href="https://www.instagram.com/eidosedgeofficial" target="_blank" rel="noopener"><span class="name">Instagram</span><span class="what">Work in progress</span></a>
-    </div>
+  <!-- FINAL CTA -->
+  <section class="final">
+    <div class="kicker">Launch sale &middot; 38% off</div>
+    <h2>Texture Faster. <span class="orange">Ship Anywhere.</span></h2>
+    <p>MatricX PRO and MatricX Bake together &mdash; from a raw model to a finished, engine-ready asset.</p>
+    <a class="btn btn-xl" href="https://superhivemarket.com/products/matricx-bundle-save-30---complete-material--baking-system" target="_blank" rel="noopener">Get the Bundle &mdash; $67.58</a>
   </section>
-
-  <footer id="contact">
-    <p>&copy; 2024&ndash;2026 Prasanth / Eidos Edge. All rights reserved.</p>
-    <p><a href="mailto:contact.eidosedge@gmail.com">contact.eidosedge@gmail.com</a></p>
-    <p>
-      <a href="https://jack-hardsurface.github.io/MatricX-Pro-Page/">MatricX PRO</a>
-      &nbsp;|&nbsp; <a href="https://jack-hardsurface.github.io/MatricX-Bake-Page/">MatricX Bake</a>
-      &nbsp;|&nbsp; <a href="https://jack-hardsurface.github.io/MatricX-Bundle-Page/">MatricX Bundle</a>
-      &nbsp;|&nbsp; <a href="https://jack-hardsurface.github.io/MatricX-Pro-Page/support.html">Support</a>
-      &nbsp;|&nbsp; <a href="https://jack-hardsurface.github.io/MatricX-Pro-Page/terms.html">Terms</a>
-    </p>
-  </footer>
-
 </div>
+
+<footer>
+  <p>&copy; 2024&ndash;2026 Prasanth / Eidos Edge. All rights reserved.</p>
+  <p>
+    <a href="https://jack-hardsurface.github.io/MatricX-Pro-Page/">MatricX PRO</a> &nbsp;|&nbsp;
+    <a href="https://jack-hardsurface.github.io/MatricX-Bake-Page/">MatricX Bake</a> &nbsp;|&nbsp;
+    <a href="https://jack-hardsurface.github.io/MatricX-Bundle-Page/">MatricX Bundle</a> &nbsp;|&nbsp;
+    <a href="https://jack-hardsurface.github.io/MatricX-Pro-Page/support.html">Support</a> &nbsp;|&nbsp;
+    <a href="https://jack-hardsurface.github.io/MatricX-Pro-Page/terms.html">Terms</a>
+  </p>
+  <p>
+    <a href="https://www.youtube.com/@MatricX-blender" target="_blank" rel="noopener">YouTube</a> &nbsp;|&nbsp;
+    <a href="https://www.artstation.com/prasantheidos" target="_blank" rel="noopener">ArtStation</a> &nbsp;|&nbsp;
+    <a href="https://www.instagram.com/eidosedgeofficial" target="_blank" rel="noopener">Instagram</a> &nbsp;|&nbsp;
+    <a href="mailto:contact.eidosedge@gmail.com">contact.eidosedge@gmail.com</a>
+  </p>
+</footer>
+
+<!-- 7. MOBILE BUY BAR -->
+<div class="buybar">
+  <span class="p">MatricX Bundle<br><s>$109</s> <b>$67.58</b></span>
+  <a class="btn" href="https://superhivemarket.com/products/matricx-bundle-save-30---complete-material--baking-system" target="_blank" rel="noopener">Buy Bundle</a>
+</div>
+
 </body>
 </html>
