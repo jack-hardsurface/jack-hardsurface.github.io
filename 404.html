@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page Not Found — Eidos Edge</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="https://eidosedgestudio.com/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="https://eidosedgestudio.com/logo.png">
+<link rel="apple-touch-icon" href="https://eidosedgestudio.com/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;700;800&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+<style>
+:root { --bg: #0a0a0a; --panel: #141414; --line: #2a2a2a; --text: #d1d1d1; --muted: #a0a0a0; --head: #ffffff; --orange: #f26722; --orange-hover: #ff8a4c; --green: #69f0ae; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body { display: flex; flex-direction: column; background: var(--bg); color: var(--text); font-family: 'Inter', -apple-system, sans-serif; line-height: 1.6;
+  background-image: radial-gradient(circle at 50% 38%, rgba(242,103,34,.14), transparent 55%); }
+.header { display: flex; align-items: center; max-width: 1080px; width: 100%; margin: 0 auto; padding: 16px 20px; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--head); text-decoration: none; font-family: 'Anton', Impact, sans-serif; font-size: 20px; text-transform: uppercase; }
+.brand img { width: 36px; height: 36px; border-radius: 7px; }
+.brand span { color: var(--orange); }
+main { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px 20px 64px; }
+.code { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 13px; letter-spacing: 4px; color: var(--green); margin-bottom: 18px; }
+h1 { font-family: 'Anton', Impact, sans-serif; font-weight: 400; text-transform: uppercase; color: var(--head); font-size: clamp(44px, 9vw, 96px); line-height: 1.05; letter-spacing: .5px; margin-bottom: 18px; }
+h1 span { color: var(--orange); }
+p { color: var(--muted); font-size: 17px; max-width: 520px; margin-bottom: 34px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 16px 34px; border-radius: 4px; background: var(--orange); color: #000;
+  font-weight: 800; font-size: 16px; text-transform: uppercase; letter-spacing: .3px; text-decoration: none; box-shadow: 0 4px 15px rgba(242,103,34,.3); transition: background .2s, transform .2s; }
+.btn:hover { background: var(--orange-hover); transform: translateY(-2px); }
+.btn:focus-visible, .links a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+.links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 22px; margin-top: 28px; }
+.links a { display: inline-flex; align-items: center; min-height: 44px; color: #9a9a9a; text-decoration: none; font-weight: 600; font-size: 14px; }
+.links a:hover { color: var(--head); }
+footer { text-align: center; padding: 24px 20px 32px; border-top: 1px solid var(--line); font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #666; }
+@media (prefers-reduced-motion: reduce) { .btn { transition: none; } .btn:hover { transform: none; } }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <a class="brand" href="https://eidosedgestudio.com/"><img src="https://eidosedgestudio.com/assets/eidos-edge-logo.png" alt=""> Eidos <span>Edge</span></a>
+</header>
+
+<main>
+  <div class="code">ERROR 404</div>
+  <h1>Lost in the <span>void?</span></h1>
+  <p>This page doesn't exist, or it has moved. Let's get you back to solid ground.</p>
+  <a class="btn" href="https://eidosedgestudio.com/">Back to the homepage</a>
+  <nav class="links" aria-label="Add-ons">
+    <a href="https://eidosedgestudio.com/MatricX-Pro-Page/">MatricX PRO</a>
+    <a href="https://eidosedgestudio.com/MatricX-Bake-Page/">MatricX Bake</a>
+    <a href="https://eidosedgestudio.com/MatricX-Bundle-Page/">MatricX Bundle</a>
+  </nav>
+</main>
+
+<footer>&copy; 2024&ndash;2026 Prasanth / Eidos Edge</footer>
+
+</body>
+</html>
