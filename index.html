@@ -481,25 +481,22 @@ footer a:hover { color: var(--orange); }
     <a class="btn btn-xl" href="https://eidosedge.gumroad.com/l/MatricXUltimateBundle/MXN38?utm_source=website&amp;utm_medium=final_cta&amp;utm_campaign=bundle_launch" target="_blank" rel="noopener">Get the Bundle &mdash; $67.58</a>
   </section>
 
-  <!-- NEWSLETTER SIGNUP (Web3Forms)
-       Signups are sent to Web3Forms with the access key below. If the key is ever set back to a value starting with
-       YOUR_, the form stops sending and shows a "signups open soon" message instead. -->
+  <!-- NEWSLETTER SIGNUP (Kit, formerly ConvertKit)
+       The script at the bottom of this page sends the email to Kit form 10108923 with the account's public API key.
+       Only the public "API Key" belongs here - never the "API Secret". Subscribers, unsubscribes and broadcasts are managed in Kit. -->
   <section id="newsletter" class="newsletter">
     <div class="news-card">
       <div class="kicker">Newsletter</div>
       <h2>Stay in the <span class="orange">Loop</span></h2>
       <p>New add-on releases, updates and launch offers from Eidos Edge, straight to your inbox.</p>
-      <form class="news-form" action="https://api.web3forms.com/submit" method="POST">
-        <input type="hidden" name="access_key" value="ec12c598-f1d9-4af6-841c-5dc142ed1621">
-        <input type="hidden" name="subject" value="New newsletter signup - eidosedgestudio.com">
-        <input type="hidden" name="from_name" value="Eidos Edge website">
+      <form class="news-form" novalidate>
         <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
         <label class="sr-only" for="news-email">Email address</label>
         <input id="news-email" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
         <button class="btn" type="submit">Subscribe</button>
       </form>
       <p class="news-status" role="status" aria-live="polite"></p>
-      <p class="news-note">No spam. We only email about Eidos Edge add-ons, and you can unsubscribe at any time by replying to any email.</p>
+      <p class="news-note">No spam. We only email about Eidos Edge add-ons, and every email has a one-click unsubscribe link.</p>
     </div>
   </section>
 </div>
@@ -537,27 +534,38 @@ footer a:hover { color: var(--orange); }
   if (!section.querySelector('.testimonial')) section.hidden = true;
 })();
 
-// Newsletter: post to Web3Forms in the background and show the result in place.
+// Newsletter: subscribe the email to the Kit form in the background and show the result in place.
 (function () {
   var form = document.querySelector('.news-form');
   if (!form) return;
+  var emailInput = document.getElementById('news-email');
   var status = document.querySelector('.news-status');
   var button = form.querySelector('button[type="submit"]');
   function say(text, isError) { status.textContent = text; status.classList.toggle('err', !!isError); }
-  form.addEventListener('submit', function (event) {
+  form.addEventListener('submit', async function (event) {
     event.preventDefault();
-    if (form.access_key.value.indexOf('YOUR_') === 0) { say('Signups open soon - thanks for your interest!'); return; }
+    if (!emailInput.checkValidity()) { say('Please enter a valid email address.', true); emailInput.focus(); return; }
+    if (form.botcheck.checked) { form.reset(); say('Thank you for subscribing!'); return; }  // honeypot: bots only
     button.disabled = true;
     say('Subscribing...');
-    fetch(form.action, { method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(form) })
-      .then(function (response) { return response.json(); })
-      .then(function (data) {
-        if (!data.success) throw new Error(data.message);
-        form.reset();
-        say("You're on the list. Thanks for subscribing!");
-      })
-      .catch(function () { say('Something went wrong. Please try again, or email contact@eidosedgestudio.com.', true); })
-      .then(function () { button.disabled = false; });
+    try {
+      const response = await fetch('https://api.convertkit.com/v3/forms/10108923/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          api_key: 'yRZjwPjArWFBh7ifCuXjSA',
+          email: emailInput.value.trim()
+        })
+      });
+      const data = await response.json().catch(function () { return {}; });
+      if (!response.ok || !data.subscription) throw new Error(data.message || response.status);
+      emailInput.value = '';
+      say('Thank you for subscribing!');
+    } catch (error) {
+      say('Something went wrong. Please try again, or email contact@eidosedgestudio.com.', true);
+    } finally {
+      button.disabled = false;
+    }
   });
 })();
 </script>
