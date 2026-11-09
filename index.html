@@ -144,7 +144,7 @@ section { padding: 80px 0; border-top: 1px solid var(--line); }
   color: #fff; font: 700 18px 'JetBrains Mono', monospace; }
 
 /* 5. Pricing */
-.pricing { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr) minmax(0, 1fr); gap: 18px; align-items: stretch; }
+.pricing { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 1.12fr); gap: 16px; align-items: stretch; }
 .plan { position: relative; display: flex; flex-direction: column; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 28px 24px; text-align: center; }
 .plan.featured { border: 2px solid var(--orange); background: #151210; box-shadow: 0 24px 70px rgba(242,103,34,.2); transform: translateY(-8px); }
 .plan .badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--orange); color: #111; white-space: nowrap;
@@ -162,6 +162,24 @@ section { padding: 80px 0; border-top: 1px solid var(--line); }
 .plan .tiers { margin-top: 12px; font-size: 13px; color: #8f8f8f; }
 .plan .tiers a { color: #bdbdbd; }
 .pricing-note { text-align: center; margin-top: 30px; font-size: 13.5px; color: #8a8a8a; }
+.plan { --acc: var(--green); }
+.plan.pro { --acc: var(--acc-pro); }
+.plan.bake { --acc: var(--acc-bake); }
+.plan.handy { --acc: var(--acc-handy); }
+.plan.complete { --acc: var(--acc-bundle); }
+.plan li::before { color: var(--acc); }
+.plan .cat { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--acc); margin-bottom: 6px; }
+.plan.featured.complete { border-color: var(--acc-bundle); background: #15140e; box-shadow: 0 24px 70px rgba(255,215,0,.14); }
+.plan.featured.complete .badge { background: var(--acc-bundle); }
+.plan.featured.complete .save { color: var(--acc-bundle); }
+.plan.handy .save { color: var(--acc-handy); }
+.plan-art.placeholder { display: flex; align-items: center; justify-content: center; aspect-ratio: 2 / 1; padding: 12px; text-align: center;
+  background: radial-gradient(circle at 50% 40%, rgba(255,215,0,.16), transparent 65%), #12110b; border: 1px dashed rgba(255,215,0,.45); border-radius: 10px;
+  color: #b8a75a; font-family: 'JetBrains Mono', monospace; font-size: 11.5px; letter-spacing: .5px; }
+@media (min-width: 861px) and (max-width: 1060px) {
+  .pricing { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .plan.featured { transform: none; }
+}
 
 /* 6. FAQ */
 .faq { max-width: 780px; margin: 0 auto; }
@@ -380,8 +398,9 @@ footer a:hover { color: var(--orange); }
         </div>
       </article>
       <article class="product handy">
-        <!-- PLACEHOLDER: handy-feature.png (2:1, e.g. 1200x600). Replace this .media div with
-             <div class="media"><img src="..." width="1200" height="600" loading="lazy" alt="..."></div> -->
+        <!-- PLACEHOLDER: handy-feature.png (2:1, e.g. 1200x600) -->
+        <!-- To add it, replace the .media div below with
+             <div class="media"><img src="handy-feature.png" width="1200" height="600" loading="lazy" alt="..."></div> -->
         <div class="media placeholder"><kbd>Ctrl+Shift+H</kbd><span>Handy image &middot; 2:1</span></div>
         <div class="body">
           <div class="tag">Modeling &middot; New</div>
@@ -446,15 +465,16 @@ footer a:hover { color: var(--orange); }
     </div>
   </section>
 
-  <!-- 5. PRICING -->
+  <!-- 5. PRICING: PRO, Bake, Handy, and the Complete Eidos Edge Bundle (PRO + Bake + Handy) -->
   <section id="pricing">
     <div class="section-head">
-      <div class="kicker">Launch sale &middot; 38% off</div>
+      <div class="kicker">The complete ecosystem</div>
       <h2>Pick Your <span class="orange">Pipeline</span></h2>
-      <p>Buy one add-on, or get both in the bundle for less than buying them separately.</p>
+      <p>Buy one add-on, or get all three in the Complete Bundle for less than buying them separately.</p>
     </div>
     <div class="pricing">
-      <div class="plan">
+      <div class="plan pro">
+        <div class="cat">Texturing</div>
         <h3>MatricX PRO</h3>
         <div class="price"><span class="now">$49</span><span class="was">$79</span></div>
         <div class="save">LAUNCH PRICE &middot; SAVE 38%</div>
@@ -467,22 +487,8 @@ footer a:hover { color: var(--orange); }
         <a class="btn" href="https://eidosedge.gumroad.com/l/MatricX-PRO/MXN38?utm_source=website&amp;utm_medium=pricing_card&amp;utm_campaign=pro_launch" target="_blank" rel="noopener">Get PRO</a>
       </div>
 
-      <div class="plan featured">
-        <span class="badge">BEST VALUE</span>
-        <div class="premium plan-art"><img src="https://eidosedgestudio.com/MatricX-Bundle-Page/media/bundle-thumbnail.jpg?v=1" width="1456" height="720" loading="lazy" alt="MatricX Bundle: MatricX Bake 1.7.8 and MatricX PRO 2.1 shown as two hardcover volumes."></div>
-        <h3>The MatricX Bundle</h3>
-        <div class="price"><span class="now">$67.58</span><span class="was">$109</span></div>
-        <div class="save">LAUNCH PRICE &middot; SAVE 38%</div>
-        <ul>
-          <li>Everything in MatricX PRO</li>
-          <li>Everything in MatricX Bake</li>
-          <li>Lifetime updates</li>
-        </ul>
-        <a class="btn" href="https://eidosedge.gumroad.com/l/MatricXUltimateBundle/MXN38?utm_source=website&amp;utm_medium=pricing_card&amp;utm_campaign=bundle_launch" target="_blank" rel="noopener">Get the Bundle</a>
-        <div class="tiers">Creator tier. Pro, Studio and Enterprise tiers on the <a href="https://eidosedgestudio.com/MatricX-Bundle-Page/#tiers">Bundle page</a>.</div>
-      </div>
-
-      <div class="plan">
+      <div class="plan bake">
+        <div class="cat">Baking</div>
         <h3>MatricX Bake</h3>
         <div class="price"><span class="now">$49</span><span class="was">$79</span></div>
         <div class="save">LAUNCH PRICE &middot; SAVE 38%</div>
@@ -493,9 +499,47 @@ footer a:hover { color: var(--orange); }
         </ul>
         <a class="btn" href="https://eidosedge.gumroad.com/l/MatricXBake/MXN38?utm_source=website&amp;utm_medium=pricing_card&amp;utm_campaign=bake_launch" target="_blank" rel="noopener">Get Bake</a>
       </div>
+
+      <div class="plan handy">
+        <div class="cat">Modeling</div>
+        <h3>Handy</h3>
+        <div class="price"><span class="now">$29</span></div>
+        <div class="save">SOLO TIER &middot; 7 TOOLS</div>
+        <ul>
+          <li>UnBevel &amp; Smart Inset</li>
+          <li>Offset Cut &amp; Smart Loop</li>
+          <li>Smart Boolean &amp; Safe Edit</li>
+          <li>One Ctrl+Shift+H menu</li>
+        </ul>
+        <!-- Handy is not on sale yet: the button opens the support tiers on the Handy page. -->
+        <a class="btn" href="handy.html#pricing">Get Handy</a>
+      </div>
+
+      <div class="plan featured complete">
+        <span class="badge">BEST VALUE</span>
+        <!-- PLACEHOLDER: complete-bundle.png (2:1, e.g. 1200x600) -->
+        <!-- Artwork for the Complete Bundle (PRO + Bake + Handy). To add it, replace this div with
+             <div class="premium plan-art"><img src="..." width="1200" height="600" loading="lazy" alt="..."></div> -->
+        <div class="plan-art placeholder">Complete Bundle image &middot; 2:1</div>
+        <div class="cat">Modeling &middot; Texturing &middot; Baking</div>
+        <h3>The Complete Eidos Edge Bundle</h3>
+        <div class="price"><span class="now">$99</span></div>
+        <div class="save">SAVE $28 VS. BUYING SEPARATELY</div>
+        <ul>
+          <li>Everything in MatricX PRO</li>
+          <li>Everything in MatricX Bake</li>
+          <li>Everything in Handy</li>
+          <li>Lifetime updates</li>
+        </ul>
+        <!-- STORE LINK: PLACEHOLDER. Replace href="#" with the Complete Bundle's Gumroad link, plus
+             ?utm_source=website&amp;utm_medium=pricing_card&amp;utm_campaign=complete_bundle_launch -->
+        <a class="btn" href="#">Get the Complete Bundle</a>
+      </div>
     </div>
-    <p class="pricing-note">Checkout on Gumroad. Prefer Blender Market? <a href="https://superhivemarket.com/products/matricx-pro-one-click-realistic-texture" target="_blank" rel="noopener">PRO</a> &middot;
-      <a href="https://superhivemarket.com/products/matricx-bake-game-ready-texture-blender" target="_blank" rel="noopener">Bake</a> &middot; <a href="https://superhivemarket.com/products/matricx-bundle-save-30---complete-material--baking-system" target="_blank" rel="noopener">Bundle</a>.
+    <p class="pricing-note">Checkout on Gumroad. The Complete Bundle's $28 saving compares it with PRO, Bake and Handy at the prices shown here.
+      Prefer Blender Market? <a href="https://superhivemarket.com/products/matricx-pro-one-click-realistic-texture" target="_blank" rel="noopener">PRO</a> &middot;
+      <a href="https://superhivemarket.com/products/matricx-bake-game-ready-texture-blender" target="_blank" rel="noopener">Bake</a> &middot;
+      <a href="https://superhivemarket.com/products/matricx-bundle-save-30---complete-material--baking-system" target="_blank" rel="noopener">MatricX Bundle (PRO + Bake)</a>.
       Launch prices are temporary; the price you pay is the one shown at checkout.</p>
   </section>
 

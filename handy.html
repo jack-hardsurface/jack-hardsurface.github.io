@@ -130,8 +130,6 @@ kbd { display: inline-block; padding: 1px 8px; border: 1px solid var(--accent-li
 .plan ul { list-style: none; text-align: left; margin: 0 0 24px; flex: 1; border-top: 1px solid var(--line); padding-top: 16px; }
 .plan li { position: relative; padding-left: 24px; margin-bottom: 9px; font-size: 14.5px; color: #cfcfcf; }
 .plan li::before { content: "\2713"; position: absolute; left: 0; color: var(--accent); font-weight: 800; }
-.plan li.todo { color: #8a7a9e; font-style: italic; }
-.plan li.todo::before { content: "\2026"; }
 .plan .btn { width: 100%; }
 .pricing-note { text-align: center; margin-top: 28px; font-size: 13.5px; color: #8a8a8a; }
 
@@ -193,8 +191,9 @@ footer a:hover { color: var(--orange); }
       <a class="btn btn-xl" href="#pricing">Get Handy &mdash; $29</a>
       <span class="note">Blender 4.0 and newer &middot; tested on 4.0, 4.5 and 5.2</span>
     </div>
-    <!-- PLACEHOLDER: hero image, 16:9 (e.g. 1600x900): the Handy menu open in Blender.
-         Replace the text inside .shot with <img src="..." width="1600" height="900" alt="The Handy menu open in Blender's 3D View."> -->
+    <!-- PLACEHOLDER: handy-hero.gif (16:9, e.g. 1600x900) -->
+    <!-- Shows the Handy menu (Ctrl+Shift+H) open in Blender. To add it, replace the text inside .shot with
+         <img src="handy-hero.gif" width="1600" height="900" alt="The Handy menu open in Blender's 3D View."> -->
     <div class="shot">Hero image &middot; the Handy menu (Ctrl+Shift+H) open in Blender &middot; 16:9</div>
   </section>
 </div>
@@ -304,46 +303,50 @@ footer a:hover { color: var(--orange); }
   <section id="pricing">
     <div class="section-head">
       <div class="kicker">Pricing</div>
-      <h2>Pick Your <span class="accent">Licence</span></h2>
-      <p>One price, every tool. Choose the tier that fits how you work.</p>
+      <h2>Pick Your <span class="accent">Support</span></h2>
+      <p>Every tier includes every tool. The tiers differ in the support and onboarding you get.</p>
     </div>
-    <!-- PLACEHOLDER: what each tier includes (seats, use, support). The lines marked "todo" are for you to fill in. -->
+    <!-- GPL: Handy is GPL-3.0, so the tiers sell support and convenience, never permission to use it.
+         Keep every line about what the developer provides; never write a line that limits who may use or install Handy. -->
     <div class="pricing">
       <div class="plan lead">
         <h3>Solo</h3>
         <div class="for">For individual artists</div>
         <div class="price">$29</div>
         <ul>
-          <li>Every Handy tool</li>
-          <li>Blender 4.0 and newer</li>
-          <li class="todo">Tier details &mdash; to be added</li>
+          <li>Full Handy 1.0 suite</li>
+          <li>Standard email support (48h response)</li>
+          <li>Lifetime updates</li>
         </ul>
         <a class="btn" href="#pricing">Get Solo</a>
       </div>
       <div class="plan">
         <h3>Studio</h3>
-        <div class="for">For small teams</div>
+        <div class="for">For small teams &amp; freelancers</div>
         <div class="price">$89</div>
         <ul>
-          <li>Every Handy tool</li>
-          <li>Blender 4.0 and newer</li>
-          <li class="todo">Tier details &mdash; to be added</li>
+          <li>Full Handy 1.0 suite</li>
+          <li>Priority email support (24h response)</li>
+          <li>Setup help for every computer in your studio</li>
+          <li>1-on-1 onboarding call for your team</li>
         </ul>
         <a class="btn" href="#pricing">Get Studio</a>
       </div>
       <div class="plan">
         <h3>Commercial</h3>
-        <div class="for">For companies</div>
+        <div class="for">For large studios &amp; enterprises</div>
         <div class="price">$199</div>
         <ul>
-          <li>Every Handy tool</li>
-          <li>Blender 4.0 and newer</li>
-          <li class="todo">Tier details &mdash; to be added</li>
+          <li>Full Handy 1.0 suite</li>
+          <li>Dedicated Discord/Slack support channel with the developer</li>
+          <li>Direct feature request priority</li>
+          <li>Support for unlimited users in your organization</li>
         </ul>
         <a class="btn" href="#pricing">Get Commercial</a>
       </div>
     </div>
-    <p class="pricing-note">Prices in US dollars. The price you pay is the one shown at checkout.</p>
+    <p class="pricing-note">Handy is GPL-3.0 licensed. You are always free to share and modify the code under the GPL terms. These tiers are for purchasing developer support and team onboarding.<br>
+      Prices in US dollars. The price you pay is the one shown at checkout.</p>
   </section>
 
   <!-- FINAL CTA -->
