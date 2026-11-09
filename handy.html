@@ -11,8 +11,12 @@
 <meta property="og:url" content="https://eidosedgestudio.com/handy.html">
 <meta property="og:title" content="Handy — Stop Fighting Topology. Model Faster.">
 <meta property="og:description" content="7 hard-surface modeling tools for Blender in one Ctrl+Shift+H menu: UnBevel, Smart Inset, Offset Cut and more.">
-<!-- PLACEHOLDER: share image (1200x630). Add og:image, og:image:width/height/alt and twitter:image here once the Handy render exists. -->
+<meta property="og:image" content="https://eidosedgestudio.com/assets/handy-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="600">
+<meta property="og:image:alt" content="Handy, the advanced modeling tool for Blender.">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://eidosedgestudio.com/assets/handy-cover.jpg">
 <meta name="twitter:title" content="Handy — Stop Fighting Topology. Model Faster.">
 <meta name="twitter:description" content="7 hard-surface modeling tools for Blender in one Ctrl+Shift+H menu: UnBevel, Smart Inset, Offset Cut and more.">
 <link rel="icon" href="https://eidosedgestudio.com/favicon.ico" sizes="any">
@@ -82,6 +86,10 @@ kbd { display: inline-block; padding: 1px 8px; border: 1px solid var(--accent-li
 .shot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 10px; }
 
 /* Hero */
+.hero-logo { display: block; width: 84px; height: 84px; margin: 0 auto 18px; border-radius: 18px; box-shadow: 0 0 0 1px var(--accent-line), 0 14px 40px rgba(168,85,247,.35); }
+.hero-img { position: relative; left: 50%; width: min(1240px, calc(100vw - 32px)); transform: translateX(-50%); aspect-ratio: 2 / 1; overflow: hidden;
+  border: 1px solid var(--accent-line); border-radius: 14px; background: #0b0b0b; box-shadow: 0 40px 120px rgba(0,0,0,.7), 0 0 100px rgba(168,85,247,.22); }
+.hero-img img { width: 100%; height: 100%; object-fit: cover; }
 .hero { text-align: center; padding: 56px 0 72px; border-top: none; background: radial-gradient(circle at 50% 0, rgba(168,85,247,.16), transparent 60%); }
 .hero h1 { font-size: clamp(38px, 7vw, 78px); max-width: 960px; margin: 0 auto 22px; }
 .hero h1 .accent { display: block; }
@@ -148,7 +156,9 @@ kbd { display: inline-block; padding: 1px 8px; border: 1px solid var(--accent-li
 .plan.lead { border: 2px solid var(--accent); background: #141118; box-shadow: 0 24px 70px rgba(168,85,247,.16); }
 .plan h3 { font-size: 26px; margin-bottom: 6px; }
 .plan .for { color: #8f8f8f; font-size: 14px; margin-bottom: 16px; }
-.plan .price { font-family: 'Anton', Impact, sans-serif; font-size: 54px; color: var(--head); line-height: 1; margin-bottom: 18px; }
+.plan .price { display: flex; align-items: baseline; justify-content: center; gap: 10px; font-family: 'Anton', Impact, sans-serif; font-size: 50px; color: var(--head); line-height: 1; margin-bottom: 6px; }
+.plan .price s { font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 600; color: #6f6f6f; }
+.plan .save { font-family: 'JetBrains Mono', monospace; font-size: 11.5px; font-weight: 700; letter-spacing: 1px; color: var(--accent); margin-bottom: 18px; }
 .plan ul { list-style: none; text-align: left; margin: 0 0 24px; flex: 1; border-top: 1px solid var(--line); padding-top: 16px; }
 .plan li { position: relative; padding-left: 24px; margin-bottom: 9px; font-size: 14.5px; color: #cfcfcf; }
 .plan li::before { content: "\2713"; position: absolute; left: 0; color: var(--accent); font-weight: 800; }
@@ -190,9 +200,9 @@ footer a:hover { color: var(--orange); }
 </head>
 <body>
 
-<!-- STORE LINKS: PLACEHOLDER. Handy is not on sale yet, so every buy button points to #pricing.
-     When the store pages exist, replace each href="#pricing" on a .btn below with the product link
-     (Gumroad first, as on the MatricX pages), e.g. https://eidosedge.gumroad.com/l/<product>?utm_source=website&utm_medium=handy_page&utm_campaign=handy_launch -->
+<!-- STORE LINKS: every buy button goes to Handy on Gumroad with the launch discount code MXN38 (38% off):
+     https://eidosedge.gumroad.com/l/hgmki/MXN38  (Solo $44 -> $27.28, Studio $89 -> $55.18, Commercial $199 -> $123.38).
+     Buyers choose the tier at checkout. When the launch offer ends, remove '/MXN38' and update the prices. -->
 
 <header class="header">
   <a class="brand" href="https://eidosedgestudio.com/"><img src="https://eidosedgestudio.com/assets/eidos-edge-logo.png" alt=""> Eidos <span>Edge</span></a>
@@ -206,18 +216,17 @@ footer a:hover { color: var(--orange); }
 
   <!-- HERO -->
   <section class="hero">
+    <img class="hero-logo" src="assets/logos/handy.jpg" width="240" height="240" alt="">
     <div class="kicker">New &middot; Handy 1.0 for Blender</div>
     <h1>Stop fighting topology. <span class="accent">Model faster with 7 surgical tools.</span></h1>
     <p class="sub">Handy fixes Blender's biggest hard-surface modeling flaws. UnBevel, Smart Inset, Offset Cut, and more &mdash; accessible instantly via a lightning-fast <kbd>Ctrl+Shift+H</kbd> menu.</p>
     <div class="hero-ctas">
-      <a class="btn btn-xl" href="#pricing">Get Handy &mdash; $29</a>
-      <span class="note">Blender 4.0 and newer &middot; tested on 4.0, 4.5 and 5.2</span>
+      <a class="btn btn-xl" href="https://eidosedge.gumroad.com/l/hgmki/MXN38?utm_source=website&amp;utm_medium=hero&amp;utm_campaign=handy_launch" target="_blank" rel="noopener">Get Handy &mdash; $27.28</a>
+      <span class="note">Launch price, regular $44 &middot; Blender 4.0 and newer &middot; tested on 4.0, 4.5 and 5.2</span>
       <span class="guarantee">Backed by 5,851 automated tests. <a href="https://eidosedgestudio.com/MatricX-Pro-Page/terms.html#guarantee">30-day support guarantee</a>.</span>
     </div>
-    <!-- PLACEHOLDER: handy-hero.gif (16:9, e.g. 1600x900) -->
-    <!-- Shows the Handy menu (Ctrl+Shift+H) open in Blender. To add it, replace the text inside .shot with
-         <img src="handy-hero.gif" width="1600" height="900" alt="The Handy menu open in Blender's 3D View."> -->
-    <div class="shot">Hero image &middot; the Handy menu (Ctrl+Shift+H) open in Blender &middot; 16:9</div>
+    <div class="hero-img"><img src="assets/handy-cover.jpg" width="1200" height="600"
+         alt="Handy, the advanced modeling tool: a sphere with a clean cut, shown with and without its wireframe."></div>
   </section>
 </div>
 
@@ -367,44 +376,48 @@ footer a:hover { color: var(--orange); }
       <div class="plan lead">
         <h3>Solo</h3>
         <div class="for">For individual artists</div>
-        <div class="price">$29</div>
+        <div class="price">$27.28 <s>$44</s></div>
+        <div class="save">LAUNCH PRICE &middot; SAVE 38%</div>
         <ul>
           <li>Full Handy 1.0 suite</li>
           <li>Standard email support (48h response)</li>
           <li>Lifetime updates</li>
         </ul>
-        <a class="btn" href="#pricing">Get Solo</a>
+        <a class="btn" href="https://eidosedge.gumroad.com/l/hgmki/MXN38?utm_source=website&amp;utm_medium=pricing_card&amp;utm_campaign=handy_launch" target="_blank" rel="noopener">Get Solo</a>
         <p class="guarantee">Backed by 5,851 automated tests. <a href="https://eidosedgestudio.com/MatricX-Pro-Page/terms.html#guarantee">30-day support guarantee</a>.</p>
       </div>
       <div class="plan">
         <h3>Studio</h3>
         <div class="for">For small teams &amp; freelancers</div>
-        <div class="price">$89</div>
+        <div class="price">$55.18 <s>$89</s></div>
+        <div class="save">LAUNCH PRICE &middot; SAVE 38%</div>
         <ul>
           <li>Full Handy 1.0 suite</li>
           <li>Priority email support (24h response)</li>
           <li>Setup help for every computer in your studio</li>
           <li>1-on-1 onboarding call for your team</li>
         </ul>
-        <a class="btn" href="#pricing">Get Studio</a>
+        <a class="btn" href="https://eidosedge.gumroad.com/l/hgmki/MXN38?utm_source=website&amp;utm_medium=pricing_card&amp;utm_campaign=handy_launch" target="_blank" rel="noopener">Get Studio</a>
         <p class="guarantee">Backed by 5,851 automated tests. <a href="https://eidosedgestudio.com/MatricX-Pro-Page/terms.html#guarantee">30-day support guarantee</a>.</p>
       </div>
       <div class="plan">
         <h3>Commercial</h3>
         <div class="for">For large studios &amp; enterprises</div>
-        <div class="price">$199</div>
+        <div class="price">$123.38 <s>$199</s></div>
+        <div class="save">LAUNCH PRICE &middot; SAVE 38%</div>
         <ul>
           <li>Full Handy 1.0 suite</li>
           <li>Dedicated Discord/Slack support channel with the developer</li>
           <li>Direct feature request priority</li>
           <li>Support for unlimited users in your organization</li>
         </ul>
-        <a class="btn" href="#pricing">Get Commercial</a>
+        <a class="btn" href="https://eidosedge.gumroad.com/l/hgmki/MXN38?utm_source=website&amp;utm_medium=pricing_card&amp;utm_campaign=handy_launch" target="_blank" rel="noopener">Get Commercial</a>
         <p class="guarantee">Backed by 5,851 automated tests. <a href="https://eidosedgestudio.com/MatricX-Pro-Page/terms.html#guarantee">30-day support guarantee</a>.</p>
       </div>
     </div>
     <p class="pricing-note">Handy is GPL-3.0 licensed. You are always free to share and modify the code under the GPL terms. These tiers are for purchasing developer support and team onboarding.<br>
-      Prices in US dollars. The price you pay is the one shown at checkout.</p>
+      Prices in US dollars. Launch prices use the code MXN38 (38% off), already applied by these links; choose your tier at checkout.
+      The price you pay is the one shown at checkout.</p>
   </section>
 
   <!-- FINAL CTA -->
@@ -412,7 +425,7 @@ footer a:hover { color: var(--orange); }
     <div class="kicker">Handy for Blender</div>
     <h2>Stop Fighting Topology. <span class="accent">Start Modeling.</span></h2>
     <p>Seven tools, one menu, one shortcut.</p>
-    <a class="btn btn-xl" href="#pricing">Get Handy &mdash; $29</a>
+    <a class="btn btn-xl" href="https://eidosedge.gumroad.com/l/hgmki/MXN38?utm_source=website&amp;utm_medium=final_cta&amp;utm_campaign=handy_launch" target="_blank" rel="noopener">Get Handy &mdash; $27.28</a>
     <p class="guarantee">Backed by 5,851 automated tests. <a href="https://eidosedgestudio.com/MatricX-Pro-Page/terms.html#guarantee">30-day support guarantee</a>.</p>
   </section>
 </div>
