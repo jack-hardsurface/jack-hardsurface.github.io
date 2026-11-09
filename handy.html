@@ -84,6 +84,12 @@ kbd { display: inline-block; padding: 1px 8px; border: 1px solid var(--accent-li
   background: linear-gradient(rgba(168,85,247,.05) 1px, transparent 1px) 0 0 / 24px 24px, linear-gradient(90deg, rgba(168,85,247,.05) 1px, transparent 1px) 0 0 / 24px 24px, #111;
   color: #8a7a9e; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: .5px; }
 .shot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 10px; }
+/* Tool demo slots waiting for their GIFs: a calm "coming soon" state */
+.shot.soon { flex-direction: column; gap: 10px; color: #a58bd0; font-size: 11.5px; letter-spacing: 1.5px; text-transform: uppercase;
+  background: radial-gradient(circle at 50% 45%, rgba(168,85,247,.14), transparent 62%), linear-gradient(rgba(168,85,247,.05) 1px, transparent 1px) 0 0 / 24px 24px,
+  linear-gradient(90deg, rgba(168,85,247,.05) 1px, transparent 1px) 0 0 / 24px 24px, #111; }
+.shot.soon .play { width: 38px; height: 38px; fill: none; stroke: var(--accent); stroke-width: 1.4; opacity: .85; }
+.shot.soon .play path { fill: var(--accent); stroke: none; }
 
 /* Hero */
 .hero-logo { display: block; width: 84px; height: 84px; margin: 0 auto 18px; border-radius: 18px; box-shadow: 0 0 0 1px var(--accent-line), 0 14px 40px rgba(168,85,247,.35); }
@@ -290,7 +296,7 @@ footer a:hover { color: var(--orange); }
 
       <article class="tool">
         <!-- PLACEHOLDER: unbevel.gif (16:10). Replace the text inside .shot with <img src="..." alt="..."> -->
-        <div class="shot">UnBevel &middot; GIF</div>
+        <div class="shot soon" role="img" aria-label="UnBevel demo coming soon"><svg class="play" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10.5"/><path d="M10 8.2l6 3.8-6 3.8z"/></svg><span>Demo coming soon</span></div>
         <div class="body">
           <div class="head"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20V10l6-6h10"/><path d="M4 4h6M4 4v6" stroke-dasharray="2 2.5"/></svg></span><h3>UnBevel</h3></div>
           <p>Take an applied bevel back to its sharp edge &mdash; or drag to narrow or widen it.</p>
@@ -300,7 +306,7 @@ footer a:hover { color: var(--orange); }
 
       <article class="tool">
         <!-- PLACEHOLDER: smart-inset.gif (16:10) -->
-        <div class="shot">Smart Inset &middot; GIF</div>
+        <div class="shot soon" role="img" aria-label="Smart Inset demo coming soon"><svg class="play" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10.5"/><path d="M10 8.2l6 3.8-6 3.8z"/></svg><span>Demo coming soon</span></div>
         <div class="body">
           <div class="head"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><rect x="8" y="8" width="8" height="8" rx="2"/></svg></span><h3>Smart Inset</h3></div>
           <p>Inset faces by an even distance without moving their outline, so the bevels and fillets beside them never crowd or shrink.</p>
@@ -310,7 +316,7 @@ footer a:hover { color: var(--orange); }
 
       <article class="tool">
         <!-- PLACEHOLDER: offset-cut.gif (16:10) -->
-        <div class="shot">Offset Cut &middot; GIF</div>
+        <div class="shot soon" role="img" aria-label="Offset Cut demo coming soon"><svg class="play" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10.5"/><path d="M10 8.2l6 3.8-6 3.8z"/></svg><span>Demo coming soon</span></div>
         <div class="body">
           <div class="head"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12h18"/><path d="M3 7.5h18M3 16.5h18" stroke-dasharray="3 2.5"/></svg></span><h3>Offset Cut</h3></div>
           <p>Support loops on both sides of a Boolean seam, cut like a pipe, so dense and curved seams come out clean.</p>
@@ -320,7 +326,7 @@ footer a:hover { color: var(--orange); }
 
       <article class="tool">
         <!-- PLACEHOLDER: smart-loop.gif (16:10) -->
-        <div class="shot">Smart Loop &middot; GIF</div>
+        <div class="shot soon" role="img" aria-label="Smart Loop demo coming soon"><svg class="play" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10.5"/><path d="M10 8.2l6 3.8-6 3.8z"/></svg><span>Demo coming soon</span></div>
         <div class="body">
           <div class="head"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 4h18v16H3z"/><path d="M3 4l9 8 9-8"/><path d="M3 15h18" stroke-dasharray="3 2"/></svg></span><h3>Smart Loop</h3></div>
           <p>A loop cut that carries on through triangles and n-gons instead of stopping at them.</p>
@@ -330,7 +336,7 @@ footer a:hover { color: var(--orange); }
 
       <article class="tool">
         <!-- PLACEHOLDER: smart-primitive.gif (16:10) -->
-        <div class="shot">Smart Primitive &middot; GIF</div>
+        <div class="shot soon" role="img" aria-label="Smart Primitive demo coming soon"><svg class="play" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10.5"/><path d="M10 8.2l6 3.8-6 3.8z"/></svg><span>Demo coming soon</span></div>
         <div class="body">
           <div class="head"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg></span><h3>Smart Primitive</h3></div>
           <p>Drop a cube, cylinder or sphere on the surface under the mouse, lined up with it. Click to add, Ctrl+Click to cut &mdash; the cutters stay live.</p>
@@ -340,7 +346,7 @@ footer a:hover { color: var(--orange); }
 
       <article class="tool">
         <!-- PLACEHOLDER: select-seam.gif (16:10) -->
-        <div class="shot">Select Seam &middot; GIF</div>
+        <div class="shot soon" role="img" aria-label="Select Seam demo coming soon"><svg class="play" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10.5"/><path d="M10 8.2l6 3.8-6 3.8z"/></svg><span>Demo coming soon</span></div>
         <div class="body">
           <div class="head"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="12" r="6"/><circle cx="15" cy="12" r="6"/><path d="M12 7v10" stroke-width="2.6"/></svg></span><h3>Select Seam</h3></div>
           <p>Select a Boolean's whole seam from a single edge.</p>
@@ -350,7 +356,7 @@ footer a:hover { color: var(--orange); }
 
       <article class="tool wide">
         <!-- PLACEHOLDER: smart-boolean.gif (16:10) -->
-        <div class="shot">Smart Boolean &amp; Safe Edit &middot; GIF</div>
+        <div class="shot soon" role="img" aria-label="Smart Boolean and Safe Edit demo coming soon"><svg class="play" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10.5"/><path d="M10 8.2l6 3.8-6 3.8z"/></svg><span>Demo coming soon</span></div>
         <div class="body">
           <div class="head"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="12" height="12" rx="2"/><rect x="9" y="9" width="12" height="12" rx="2"/></svg></span><h3>Smart Boolean &amp; Safe Edit</h3></div>
           <p><b>Smart Boolean</b> applies a mesh's Boolean modifiers, cleans up the result and shades it by angle in one click.
