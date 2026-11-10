@@ -397,7 +397,7 @@ footer a:hover { color: var(--orange); }
 
     <div class="showcase">
       <!-- Hero loop: the three add-on boxes (MatricX PRO, Handy, MatricX Bake). 8 s, 1280x720, no sound; the poster is its first frame. -->
-      <video src="assets/home-hero.mp4" poster="assets/home-hero.jpg" width="1280" height="720" muted loop playsinline preload="auto"
+      <video src="assets/home-hero.mp4" poster="assets/home-hero.jpg" width="1280" height="720" autoplay muted loop playsinline preload="auto"
              aria-label="The three Eidos Edge add-ons, MatricX PRO, Handy and MatricX Bake, as product boxes in red smoke."></video>
     </div>
 
@@ -807,15 +807,15 @@ footer a:hover { color: var(--orange); }
 
 <script src="assets/sale.js" defer></script>
 <script>
-/* Hero video: plays while it is on screen and pauses when scrolled away.
-   With reduced motion it stays on its first frame and shows play controls instead. */
+/* Hero video: autoplays and loops for everyone (owner's choice), and pauses while scrolled off screen.
+   Visitors who ask their system for reduced motion also get the player controls, so they can pause it. */
 (function () {
   var v = document.querySelector('.showcase video');
   if (!v) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
-    v.controls = true;
-    return;
-  }
+  v.muted = true;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) v.controls = true;
+  v.play().catch(function () { v.controls = true; });
+  if (!('IntersectionObserver' in window)) return;
   new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (entry.isIntersecting) { v.play().catch(function () { v.controls = true; }); }
