@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Complete Eidos Edge Bundle — Start Here Guide</title>
+<meta name="description" content="Start here: install Handy, MatricX PRO and MatricX Bake, and take one model from blockout to a game-ready asset.">
+<link rel="canonical" href="https://eidosedgestudio.com/bundle-guide.html">
+<link rel="icon" href="https://eidosedgestudio.com/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="https://eidosedgestudio.com/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a0a;
+  --panel: #141414;
+  --line: #2a2a2a;
+  --text: #d1d1d1;
+  --muted: #a3a3a3;
+  --head: #ffffff;
+  --orange: #f26722;
+  --accent: #ef3350;
+  --accent-deep: #a50f25;
+  --accent-soft: rgba(239, 51, 80, .10);
+  --accent-line: rgba(239, 51, 80, .45);
+  --acc-pro: #69f0ae;
+  --acc-bake: #e0e0e0;
+  --acc-handy: #a855f7;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { background: var(--bg); color: var(--text); font-family: 'Inter', -apple-system, sans-serif; font-size: 15.5px; line-height: 1.65; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: var(--accent); }
+b, strong { color: #f2f2f2; font-weight: 600; }
+code, kbd { font-family: 'JetBrains Mono', monospace; font-size: .86em; }
+code { color: #ffb3bf; background: #1b1416; padding: 1px 6px; border-radius: 4px; }
+kbd { display: inline-block; padding: 1px 7px; border: 1px solid #444; border-bottom-width: 2px; border-radius: 5px; background: #1b1b1b; color: var(--head); font-weight: 700; white-space: nowrap; }
+.page { max-width: 860px; margin: 0 auto; padding: 0 28px; }
+h1, h2, h3 { font-family: 'Anton', Impact, sans-serif; font-weight: 400; text-transform: uppercase; color: var(--head); letter-spacing: .5px; line-height: 1.1; }
+h2 { font-size: 34px; margin-bottom: 14px; display: flex; align-items: baseline; gap: 14px; }
+h2 .n { font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 700; color: var(--accent); letter-spacing: 2px; }
+h3 { font-size: 21px; margin: 26px 0 10px; }
+p { margin-bottom: 12px; }
+ul, ol { margin: 0 0 14px 22px; }
+li { margin-bottom: 6px; }
+section { padding: 52px 0 44px; border-top: 1px solid var(--line); }
+.lead { color: var(--muted); font-size: 17px; }
+.kicker { color: var(--accent); font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px; }
+
+/* Cover */
+.cover { padding: 64px 0 48px; text-align: center; background: radial-gradient(circle at 50% 0, rgba(239,51,80,.16), transparent 62%); }
+.cover .logo { width: 96px; height: 96px; margin: 0 auto 20px; border-radius: 20px; box-shadow: 0 0 0 1px var(--accent-line), 0 14px 40px rgba(239,51,80,.25); }
+.cover h1 { font-size: clamp(40px, 7vw, 64px); margin-bottom: 10px; }
+.cover h1 span { color: var(--accent); display: block; }
+.cover .versions { font-family: 'JetBrains Mono', monospace; font-size: 12.5px; color: var(--muted); letter-spacing: 1px; margin: 14px 0 28px; }
+.cover .hero { border: 1px solid var(--accent-line); border-radius: 12px; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,.6); }
+.toc { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 24px; margin-top: 28px; text-align: left; font-size: 14.5px; }
+.toc a { color: var(--text); text-decoration: none; padding: 6px 0; border-bottom: 1px dashed #333; }
+.toc a b { color: var(--accent); font-family: 'JetBrains Mono', monospace; font-weight: 700; margin-right: 8px; }
+
+/* Tables */
+table { width: 100%; border-collapse: collapse; margin: 6px 0 16px; font-size: 14.5px; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+thead th { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: #8f8f8f; background: #111; }
+td code { white-space: nowrap; }
+.dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 8px; vertical-align: middle; }
+
+/* Callouts and steps */
+.note { background: var(--panel); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0 18px; font-size: 14.5px; }
+.note.tip { border-left-color: var(--acc-pro); }
+.note b:first-child { color: var(--accent); }
+.note.tip b:first-child { color: var(--acc-pro); }
+.steps { list-style: none; margin: 10px 0 18px; counter-reset: step; }
+.steps li { position: relative; padding: 12px 16px 12px 56px; margin-bottom: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; counter-increment: step; }
+.steps li::before { content: counter(step); position: absolute; left: 14px; top: 12px; width: 28px; height: 28px; border-radius: 50%; background: var(--accent-deep); color: #fff;
+  font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; }
+.shot { margin: 14px 0 20px; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: #000; }
+.shot figcaption { padding: 8px 12px; font-size: 12.5px; color: #8f8f8f; background: #101010; border-top: 1px solid var(--line); }
+.shot.todo { border-style: dashed; border-color: var(--accent-line); }
+.shot.todo .ph { aspect-ratio: 16 / 7; display: flex; align-items: center; justify-content: center; text-align: center; padding: 16px; color: #c98a96;
+  font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; background: #120d0e; }
+
+/* Pipeline */
+.stage { --acc: var(--accent); border: 1px solid var(--line); border-top: 3px solid var(--acc); border-radius: 12px; background: var(--panel); padding: 22px 22px 8px; margin: 18px 0; }
+.stage.handy { --acc: var(--acc-handy); }
+.stage.pro { --acc: var(--acc-pro); }
+.stage.bake { --acc: var(--acc-bake); }
+.stage .top { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+.stage .top img { width: 52px; height: 52px; border-radius: 11px; }
+.stage .step { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--acc); }
+.stage h3 { margin: 0; }
+.stage .shot { margin-top: 6px; }
+
+/* Shortcuts */
+.keys td:first-child { width: 38%; }
+
+/* Tiers */
+.tiers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 10px 0 16px; }
+.tier { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; font-size: 14px; }
+.tier h4 { font-family: 'Anton', Impact, sans-serif; font-weight: 400; font-size: 19px; text-transform: uppercase; color: var(--head); }
+.tier .for { color: var(--accent); font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+.tier ul { margin: 0 0 0 18px; }
+.tier li { margin-bottom: 3px; }
+
+footer { text-align: center; padding: 34px 20px 44px; border-top: 1px solid var(--line); font-size: 12.5px; color: #6f6f6f; font-family: 'JetBrains Mono', monospace; }
+footer a { color: #8a8a8a; }
+
+@media (max-width: 640px) {
+  .toc, .tiers { grid-template-columns: 1fr; }
+  h2 { font-size: 28px; }
+  th, td { padding: 8px; font-size: 13.5px; }
+}
+/* PDF / print: one A4 column, each chapter starts on a new page */
+@page { size: A4; margin: 0; }
+@media print {
+  body { font-size: 13.5px; }
+  .page { max-width: none; padding: 0 16mm; }
+  section { padding: 10mm 0 6mm; }
+  section.pb { break-before: page; padding-top: 14mm; border-top: none; }
+  .cover { padding: 16mm 0 6mm; }
+  .cover .logo { width: 64px; height: 64px; margin-bottom: 12px; }
+  .cover .lead { font-size: 14px; }
+  .cover .versions { margin: 8px 0 14px; }
+  .cover .hero { width: 78%; margin: 0 auto; }
+  .toc { margin-top: 14px; gap: 2px 24px; font-size: 13px; }
+  .toc a { padding: 3px 0; }
+  .shot.todo .ph { aspect-ratio: 16 / 4; }
+  h2, h3 { break-after: avoid; }
+  th, td { padding: 7px 10px; }
+  .note { padding: 10px 14px; margin: 10px 0 12px; }
+  h2 { font-size: 30px; }
+  .stage, .note, .steps li, .shot, .tier, table { break-inside: avoid; }
+  a { text-decoration: none; }
+}
+</style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "44709f751491424a80f4cc6aa5ee3139"}'></script><!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+<div class="page">
+
+<!-- ============ COVER ============ -->
+<header class="cover">
+  <img class="logo" src="https://eidosedgestudio.com/assets/logos/bundle.jpg" width="240" height="240" alt="">
+  <div class="kicker">Start here guide</div>
+  <h1>The Complete Eidos Edge Bundle <span>From Blockout to Game-Ready</span></h1>
+  <p class="lead">Thank you for buying the bundle. This guide gets Handy, MatricX PRO and MatricX Bake installed in a few minutes,
+    then walks one model through all three. Each add-on also has its own full manual &mdash; see section 08.</p>
+  <div class="versions">Handy 1.0 &middot; MatricX PRO 2.1 &middot; MatricX Bake 1.7.9</div>
+  <div class="hero"><img src="https://eidosedgestudio.com/assets/bundle-cover.jpg" width="1200" height="600" alt="Handy, MatricX PRO and MatricX Bake as three books tied with an Eidos Edge ribbon."></div>
+  <nav class="toc" aria-label="Contents">
+    <a href="#inside"><b>01</b>What's in your download</a>
+    <a href="#requirements"><b>02</b>Requirements</a>
+    <a href="#install"><b>03</b>Install in five minutes</a>
+    <a href="#pipeline"><b>04</b>One model, three add-ons</a>
+    <a href="#shortcuts"><b>05</b>Shortcuts</a>
+    <a href="#tips"><b>06</b>Tips for working across all three</a>
+    <a href="#support"><b>07</b>Your tier, licence &amp; support</a>
+    <a href="#links"><b>08</b>Updates &amp; full manuals</a>
+  </nav>
+</header>
+
+<!-- ============ 01 ============ -->
+<section id="inside" class="pb">
+  <h2><span class="n">01</span>What's in your download</h2>
+  <table>
+    <thead><tr><th>File</th><th>What it is</th></tr></thead>
+    <tbody>
+      <tr><td><span class="dot" style="background:var(--acc-handy)"></span><code>Handy-1.0.0.zip</code></td><td>Handy &mdash; hard-surface modeling tools. One file installs as an extension or a classic add-on.</td></tr>
+      <tr><td><span class="dot" style="background:var(--acc-pro)"></span><code>MatricX_PRO_2.1.0_Blender_Extension.zip</code><br><span class="dot" style="background:var(--acc-pro)"></span><code>MatricX_PRO_2.1.0_Addon.zip</code></td><td>MatricX PRO &mdash; the same add-on in two formats. <b>Install only one of them.</b></td></tr>
+      <tr><td><span class="dot" style="background:var(--acc-pro)"></span><code>MatricX_Assets_2.1.0.zip</code></td><td>The MatricX asset pack: materials, imperfection textures and the MatricX Decals library. <b>Required</b> by MatricX PRO.</td></tr>
+      <tr><td><span class="dot" style="background:var(--acc-pro)"></span><code>MatricX_PRO_2.1_User_Guide.pdf</code></td><td>The full MatricX PRO manual.</td></tr>
+      <tr><td><span class="dot" style="background:var(--acc-bake)"></span><code>MatricX_Bake_1.7.9_Blender_Extension.zip</code><br><span class="dot" style="background:var(--acc-bake)"></span><code>MatricX_Bake_1.7.9_Addon.zip</code></td><td>MatricX Bake &mdash; the same add-on in two formats. <b>Install only one of them.</b></td></tr>
+    </tbody>
+  </table>
+  <div class="note"><b>Which format?</b> On <b>Blender 4.2 or newer</b>, use the <b>Blender Extension</b> zips (Edit &gt; Preferences &gt; Get Extensions &gt; Install from Disk).
+    The classic <b>Addon</b> zips are for Edit &gt; Preferences &gt; Add-ons &gt; Install. Keep each zip compressed when you install it &mdash; only the asset pack gets extracted.</div>
+</section>
+
+<!-- ============ 02 ============ -->
+<section id="requirements">
+  <h2><span class="n">02</span>Requirements</h2>
+  <table>
+    <thead><tr><th>Add-on</th><th>Blender</th><th>Tested on</th></tr></thead>
+    <tbody>
+      <tr><td><span class="dot" style="background:var(--acc-handy)"></span>Handy 1.0</td><td>4.0 or newer</td><td>4.0, 4.5, 5.2</td></tr>
+      <tr><td><span class="dot" style="background:var(--acc-pro)"></span>MatricX PRO 2.1</td><td>4.5 or newer</td><td>4.5, 5.1, 5.2</td></tr>
+      <tr><td><span class="dot" style="background:var(--acc-bake)"></span>MatricX Bake 1.7.9</td><td>4.5 or newer</td><td>4.5, 5.1, 5.2</td></tr>
+    </tbody>
+  </table>
+  <div class="note tip"><b>To use all three together, use Blender 4.5 or newer.</b> Every add-on is one download for Windows, macOS and Linux.</div>
+</section>
+
+<!-- ============ 03 ============ -->
+<section id="install" class="pb">
+  <h2><span class="n">03</span>Install in five minutes</h2>
+  <p>Install in this order, then restart Blender once at the end.</p>
+  <ol class="steps">
+    <li><b>Handy.</b> Blender 4.2 or newer: Edit &gt; Preferences &gt; Get Extensions &gt; the arrow at the top right &gt; <b>Install from Disk</b> &gt; <code>Handy-1.0.0.zip</code>.
+      On Blender 4.0 or 4.1: Edit &gt; Preferences &gt; Add-ons &gt; Install, then the same zip. If an older Handy is installed, remove it first.</li>
+    <li><b>MatricX PRO.</b> Install <b>one</b> of the two PRO zips the same way. Never enable the classic add-on and the extension at the same time.</li>
+    <li><b>The MatricX asset pack.</b> Extract <code>MatricX_Assets_2.1.0.zip</code> to a normal folder (for example Documents). In the 3D View press <kbd>N</kbd>, open the
+      <b>MatricX PRO</b> tab, expand <b>Runtime Assets</b> and click <b>Locate Asset Pack</b>. Select the extracted <code>MatricX_Assets_2.1.0</code> folder &mdash; MatricX remembers it.</li>
+    <li><b>MatricX Bake.</b> Install <b>one</b> of the two Bake zips. The extension asks for two permissions: <i>Network</i> (only for the optional MinistryOfFlat download) and <i>Files</i> (to write baked maps and exports).</li>
+    <li><b>Restart Blender</b>, then check that all three are there (below).</li>
+  </ol>
+  <table>
+    <thead><tr><th>Check</th><th>Where</th></tr></thead>
+    <tbody>
+      <tr><td><span class="dot" style="background:var(--acc-handy)"></span>Handy</td><td>Hover the 3D View and press <kbd>Ctrl+Shift+H</kbd> &mdash; the Handy menu opens.</td></tr>
+      <tr><td><span class="dot" style="background:var(--acc-pro)"></span>MatricX PRO</td><td><kbd>N</kbd> in the 3D View &gt; <b>MatricX PRO</b> tab. Runtime Assets shows your asset pack folder.</td></tr>
+      <tr><td><span class="dot" style="background:var(--acc-bake)"></span>MatricX Bake</td><td><kbd>N</kbd> in the 3D View &gt; <b>MatricX Bake</b> tab.</td></tr>
+    </tbody>
+  </table>
+  <!-- SCREENSHOT TO ADD: Blender's Get Extensions > Install from Disk menu. Replace this figure with <figure class="shot"><img src="..." alt="..."><figcaption>...</figcaption></figure> -->
+  <figure class="shot todo"><div class="ph">Screenshot: Preferences &gt; Get Extensions &gt; Install from Disk</div></figure>
+  <div class="note"><b>Linux (Flatpak):</b> extract the asset pack to a folder in your home directory, not inside the <code>.var</code> sandbox, then use Locate Asset Pack.
+    <br><b>Asset pack not found?</b> Locate Asset Pack accepts the pack folder itself, the folder you extracted it into, or any of its subfolders. If it rejects a folder, the reason appears in Blender's status bar.</div>
+  <!-- SCREENSHOT TO ADD: the MatricX PRO tab with Runtime Assets > Locate Asset Pack. -->
+  <figure class="shot todo"><div class="ph">Screenshot: MatricX PRO tab &gt; Runtime Assets &gt; Locate Asset Pack</div></figure>
+</section>
+
+<!-- ============ 04 ============ -->
+<section id="pipeline" class="pb">
+  <h2><span class="n">04</span>One model, three add-ons</h2>
+  <p class="lead">Here's the whole pipeline on one hard-surface prop: model it with Handy, texture it with MatricX PRO, then bake it into a game-ready asset with MatricX Bake.</p>
+
+  <div class="stage handy">
+    <div class="top"><img src="https://eidosedgestudio.com/assets/logos/handy.jpg" width="240" height="240" alt=""><div><div class="step">Step 1 &middot; Model</div><h3>Handy</h3></div></div>
+    <ol>
+      <li>Press <kbd>Ctrl+Shift+H</kbd>. Under <b>Create</b>, place a cube, cylinder or sphere on the surface under the mouse &mdash; <b>Ctrl+Click</b> to cut, <b>Shift+Click</b> to add. The cutters stay live.</li>
+      <li>When the shape is right, run <b>Smart Boolean</b>: it applies the Booleans, cleans up the result and shades it by angle.</li>
+      <li>Use <b>Select Seam</b> to pick the seam, then <b>Offset Cut</b> to add support loops on both sides of it.</li>
+      <li>Fix bevels with <b>UnBevel</b>, inset panels with <b>Smart Inset</b>, and finish with <b>Clean Up</b>.</li>
+    </ol>
+    <figure class="shot"><img src="https://eidosedgestudio.com/assets/handy-video/smart-boolean.jpg" width="1280" height="720" alt="Smart Boolean in Blender."><figcaption>Smart Boolean. Watch every tool in action on the Handy page.</figcaption></figure>
+  </div>
+
+  <div class="stage pro">
+    <div class="top"><img src="https://eidosedgestudio.com/assets/logos/pro.jpg" width="240" height="240" alt=""><div><div class="step">Step 2 &middot; Texture</div><h3>MatricX PRO</h3></div></div>
+    <ol>
+      <li>Select the mesh, press <kbd>N</kbd> and open the <b>MatricX PRO</b> tab.</li>
+      <li>Pick a <b>Family</b> (for example Metal), click a material in the collection, then click <b>Apply Material</b>.</li>
+      <li>Add imperfection layers &mdash; Edge Wear, Dirt, Rust or any of the 16 types &mdash; and tune <b>Amount</b> and <b>Opacity</b>. Paint masks by hand where wear should go.</li>
+      <li>Place decals from the Decal pie (<kbd>Ctrl+Shift+D</kbd>). Save the result as a <b>Material Look</b> to reuse it on every prop in the set.</li>
+    </ol>
+    <figure class="shot"><img src="https://eidosedgestudio.com/MatricX-Pro-Page/assets/video/materials-apply.jpg" width="1280" height="720" alt="Applying a MatricX material in Blender."><figcaption>Applying a material. Full details in the MatricX PRO user guide.</figcaption></figure>
+  </div>
+
+  <div class="stage bake">
+    <div class="top"><img src="https://eidosedgestudio.com/assets/logos/bake.jpg" width="240" height="240" alt=""><div><div class="step">Step 3 &middot; Bake &amp; export</div><h3>MatricX Bake</h3></div></div>
+    <p>The panel is numbered in the order you work: <b>1 Prepare UVs &gt; 2 Bake Maps &gt; 3 Decals &gt; 4 Combine &gt; 5 Final Bake &gt; 6 Export</b>. Steps 3&ndash;6 are optional.</p>
+    <ol>
+      <li>Select the object or collection, press <kbd>N</kbd> and open the <b>MatricX Bake</b> tab.</li>
+      <li><b>Prepare UVs</b> if the model has none, or to share one atlas across several objects (<b>One Texture Set</b>).</li>
+      <li>Choose the maps under <b>Material Bake</b>, click <b>Check</b>, then <b>Bake</b>. Click <b>Setup Baked Material</b> to see the result.</li>
+      <li>Placed decals? Bake them in step 3, then <b>Combine</b> and <b>Final Bake</b>. No decals? Go straight to export.</li>
+      <li><b>Game Asset Export</b> packages the model and textures as FBX or GLB for Unity, Unreal or Godot.</li>
+    </ol>
+    <figure class="shot"><img src="https://eidosedgestudio.com/MatricX-Bake-Page/hero/bake-thumbnail.png" width="1200" height="600" alt="A model split into its baked color, metallic, roughness and normal maps."><figcaption>The baked maps of a MatricX material. Full details in the MatricX Bake user guide.</figcaption></figure>
+  </div>
+</section>
+
+<!-- ============ 05 ============ -->
+<section id="shortcuts" class="pb">
+  <h2><span class="n">05</span>Shortcuts</h2>
+  <table class="keys">
+    <thead><tr><th>Shortcut</th><th>What it does</th></tr></thead>
+    <tbody>
+      <tr><td><kbd>Ctrl+Shift+H</kbd></td><td><span class="dot" style="background:var(--acc-handy)"></span>Handy menu (3D View, Object or Edit Mode)</td></tr>
+      <tr><td><kbd>Shift+Alt+R</kbd></td><td><span class="dot" style="background:var(--acc-handy)"></span>Smart Loop</td></tr>
+      <tr><td><kbd>Tab</kbd></td><td><span class="dot" style="background:var(--acc-handy)"></span>Safe Edit: applies the scale, then enters Edit Mode (on by default)</td></tr>
+      <tr><td><kbd>Esc</kbd> / right-click &middot; <kbd>F9</kbd></td><td><span class="dot" style="background:var(--acc-handy)"></span>Cancel a Handy drag tool &middot; its options afterwards</td></tr>
+      <tr><td><kbd>N</kbd></td><td><span class="dot" style="background:var(--acc-pro)"></span><span class="dot" style="background:var(--acc-bake)"></span>Sidebar with the MatricX PRO and MatricX Bake tabs</td></tr>
+      <tr><td><kbd>Ctrl+Shift+M</kbd></td><td><span class="dot" style="background:var(--acc-pro)"></span>MatricX Viewport pie (swatches, random colours, link and separate)</td></tr>
+      <tr><td><kbd>Ctrl+Shift+D</kbd></td><td><span class="dot" style="background:var(--acc-pro)"></span>MatricX Decal pie</td></tr>
+      <tr><td><kbd>Ctrl+Shift+T</kbd></td><td><span class="dot" style="background:var(--acc-pro)"></span>MatricX Trim Sheet pie</td></tr>
+    </tbody>
+  </table>
+  <p>Change Handy's hotkeys in Edit &gt; Preferences &gt; Handy: click a hotkey and press the key you want.</p>
+</section>
+
+<!-- ============ 06 ============ -->
+<section id="tips">
+  <h2><span class="n">06</span>Tips for working across all three</h2>
+  <ul>
+    <li><b>Apply scale before you texture or bake.</b> Safe Edit on <kbd>Tab</kbd> does it for you, so tools, materials and bakes all work at the real size.</li>
+    <li><b>Bake understands MatricX PRO.</b> It has built-in support for MatricX PRO materials, all 16 imperfection types, its glass and its trim sheets &mdash; and it bakes any other Blender material too.</li>
+    <li><b>Your UVs stay yours.</b> If the layout isn't safe to bake, Auto-Fix Bake UVs creates a separate <code>MX_BakeUV</code> map and leaves your original UVs untouched.</li>
+    <li><b>Many parts, one texture set.</b> Bake a whole collection into one shared atlas with One Texture Set &mdash; ideal for game props.</li>
+    <li><b>Live cutters.</b> Handy keeps its cutters in a hidden <code>Cutters</code> collection; show it in the Outliner to adjust any cut later.</li>
+    <li><b>Keep backups.</b> Save a copy of your project before a big bake or before updating Blender or an add-on.</li>
+  </ul>
+</section>
+
+<!-- ============ 07 ============ -->
+<section id="support" class="pb">
+  <h2><span class="n">07</span>Your tier, licence &amp; support</h2>
+  <p>Every tier includes all three add-ons. Higher tiers add support and services:</p>
+  <div class="tiers">
+    <div class="tier"><h4>Creator</h4><div class="for">For 1 artist</div><ul><li>Handy, MatricX PRO and MatricX Bake</li><li>Email support for 1 artist</li><li>Lifetime updates</li></ul></div>
+    <div class="tier"><h4>Pro</h4><div class="for">For freelancers (1 artist)</div><ul><li>Everything in Creator</li><li>Priority email support</li><li>Insider tips &amp; workflows</li></ul></div>
+    <div class="tier"><h4>Studio</h4><div class="for">For teams of up to 10 artists</div><ul><li>Everything in Pro, for up to 10 artists</li><li>Onboarding for your team</li><li>Custom workflow advice</li><li>Early access to new features</li></ul></div>
+    <div class="tier"><h4>Enterprise</h4><div class="for">For large teams (no limit on team size)</div><ul><li>Everything in Studio, for your whole organization</li><li>Custom feature requests</li><li>Direct roadmap input</li><li>Your studio featured in our showcase</li></ul></div>
+  </div>
+  <h3>Licence</h3>
+  <ul>
+    <li>The add-on code of Handy, MatricX PRO and MatricX Bake is <b>GPL-3.0</b>. You are always free to share and modify the code under the GPL terms. Tiers buy support and services, never permission to use the code.</li>
+    <li>The <b>MatricX asset files</b> (materials, textures, decals) are not GPL. Use them in any personal or commercial work, but don't share, resell or re-upload them as files or repackage them as a library. See <code>ASSET_LICENSE.txt</code>.</li>
+  </ul>
+  <h3>Support</h3>
+  <ul>
+    <li>Email <a href="mailto:contact@eidosedgestudio.com">contact@eidosedgestudio.com</a>. Standard email support: we reply within <b>48 hours</b>; priority email support: within <b>24 hours</b>.</li>
+  </ul>
+  <div class="note"><b>30-Day Support Guarantee:</b> If you encounter any bugs, installation issues, or errors within 30 days of purchase, contact our support team directly at
+    <a href="mailto:contact@eidosedgestudio.com">contact@eidosedgestudio.com</a>. We will work with you to resolve the issue. If we cannot resolve the technical issue on your machine,
+    we will authorize a full refund through the store you purchased from.</div>
+  <p>Full terms: <a href="https://eidosedgestudio.com/MatricX-Pro-Page/terms.html">eidosedgestudio.com/MatricX-Pro-Page/terms.html</a></p>
+</section>
+
+<!-- ============ 08 ============ -->
+<section id="links">
+  <h2><span class="n">08</span>Updates &amp; full manuals</h2>
+  <p><b>Lifetime updates are included.</b> When a new version is out, download it again from the store you bought from (your Gumroad library or your Blender Market account) and install it over the old one the same way.</p>
+  <table>
+    <thead><tr><th>Resource</th><th>Where</th></tr></thead>
+    <tbody>
+      <tr><td><span class="dot" style="background:var(--acc-handy)"></span>Handy &mdash; every tool in action</td><td><a href="https://eidosedgestudio.com/handy.html">eidosedgestudio.com/handy.html</a></td></tr>
+      <tr><td><span class="dot" style="background:var(--acc-pro)"></span>MatricX PRO user guide</td><td><a href="https://eidosedgestudio.com/MatricX-Pro-Page/docs/">eidosedgestudio.com/MatricX-Pro-Page/docs</a> (also the PDF in your download)</td></tr>
+      <tr><td><span class="dot" style="background:var(--acc-bake)"></span>MatricX Bake user guide</td><td><a href="https://eidosedgestudio.com/MatricX-Bake-Page/MatricX-Bake-User-Guide.html">eidosedgestudio.com/MatricX-Bake-Page/MatricX-Bake-User-Guide.html</a></td></tr>
+      <tr><td>Tutorials &amp; update news</td><td><a href="https://www.youtube.com/@MatricX-blender">youtube.com/@MatricX-blender</a></td></tr>
+      <tr><td>Newsletter (new releases)</td><td><a href="https://eidosedgestudio.com/#newsletter">eidosedgestudio.com</a></td></tr>
+      <tr><td>Support</td><td><a href="mailto:contact@eidosedgestudio.com">contact@eidosedgestudio.com</a></td></tr>
+    </tbody>
+  </table>
+</section>
+
+</div>
+<footer>
+  &copy; 2024&ndash;2026 Prasanth / Eidos Edge &middot; <a href="https://eidosedgestudio.com/">eidosedgestudio.com</a><br>
+  Complete Eidos Edge Bundle &middot; Start Here guide &middot; Handy 1.0, MatricX PRO 2.1, MatricX Bake 1.7.9
+</footer>
+</body>
+</html>
