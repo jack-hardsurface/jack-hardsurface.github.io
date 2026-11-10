@@ -100,7 +100,7 @@ section { padding: 80px 0; border-top: 1px solid var(--line); }
 .showcase { position: relative; left: 50%; width: min(1240px, calc(100vw - 32px)); transform: translateX(-50%); margin: 0 0 40px; aspect-ratio: 16 / 9;
   border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: #111;
   box-shadow: 0 40px 120px rgba(0,0,0,.7), 0 0 0 1px rgba(242,103,34,.14), 0 0 90px rgba(242,103,34,.14); }
-.showcase img { width: 100%; height: 100%; object-fit: cover; }
+.showcase img, .showcase video { display: block; width: 100%; height: 100%; object-fit: cover; }
 .hero-ctas { display: flex; flex-direction: column; align-items: center; gap: 10px; }
 .hero-ctas .note { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--green); letter-spacing: 1px; }
 
@@ -396,9 +396,9 @@ footer a:hover { color: var(--orange); }
       The complete hard-surface pipeline for Blender: <b>Modeling, Texturing, and Baking.</b></p>
 
     <div class="showcase">
-      <!-- PLACEHOLDER: hero-showcase.gif (16:9, e.g. 1600x900). Replace the img src below. Until then it shows a MatricX PRO render. -->
-      <img src="https://eidosedgestudio.com/MatricX-Pro-Page/assets/hero-after.jpg" width="1600" height="900"
-           alt="A weapon model finished with MatricX PRO materials and imperfection layers.">
+      <!-- Hero loop: the three add-on boxes (MatricX PRO, Handy, MatricX Bake). 8 s, 1280x720, no sound; the poster is its first frame. -->
+      <video src="assets/home-hero.mp4" poster="assets/home-hero.jpg" width="1280" height="720" muted loop playsinline preload="auto"
+             aria-label="The three Eidos Edge add-ons, MatricX PRO, Handy and MatricX Bake, as product boxes in red smoke."></video>
     </div>
 
     <div class="hero-ctas">
@@ -806,5 +806,23 @@ footer a:hover { color: var(--orange); }
 </script>
 
 <script src="assets/sale.js" defer></script>
+<script>
+/* Hero video: plays while it is on screen and pauses when scrolled away.
+   With reduced motion it stays on its first frame and shows play controls instead. */
+(function () {
+  var v = document.querySelector('.showcase video');
+  if (!v) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+    v.controls = true;
+    return;
+  }
+  new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) { v.play().catch(function () { v.controls = true; }); }
+      else { v.pause(); }
+    });
+  }, { threshold: 0.2 }).observe(v);
+})();
+</script>
 </body>
 </html>
