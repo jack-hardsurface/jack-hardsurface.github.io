@@ -216,7 +216,7 @@ footer a:hover { color: var(--orange); }
      When the launch offer ends, remove '/MXN38' and update the prices on this page, on the home page and in the Gumroad description. -->
 
 <a class="urgency" href="https://eidosedge.gumroad.com/l/MatricXUltimateBundle/MXN38?utm_source=website&amp;utm_medium=banner&amp;utm_campaign=complete_bundle_launch" target="_blank" rel="noopener" data-sale-only>
-  <span>&#9889; LAUNCH SALE: Save 38% at checkout (Code MXN38)</span> <span>&mdash; Ends in <span class="cd" data-countdown>7d 00h 00m 00s</span></span>
+  <span>&#9889; LAUNCH SALE: Save 38% at checkout<span data-gumroad-only> (Code MXN38)</span></span> <span>&mdash; Ends in <span class="cd" data-countdown>7d 00h 00m 00s</span></span>
 </a>
 
 <header class="header">
@@ -299,7 +299,7 @@ footer a:hover { color: var(--orange); }
     </div>
     <div class="value">
       <table>
-        <thead><tr><th>Add-on</th><th>Regular</th><th data-sale-only>Launch (MXN38)</th></tr></thead>
+        <thead><tr><th>Add-on</th><th>Regular</th><th data-sale-only><span data-gumroad-only>Launch (MXN38)</span><span data-market-only hidden>Launch (38% off)</span></th></tr></thead>
         <tbody>
           <tr><td><span class="dot" style="background:var(--acc-handy)"></span>Handy (Solo)</td><td>$44.00</td><td data-sale-only>$27.28</td></tr>
           <tr><td><span class="dot" style="background:var(--acc-pro)"></span>MatricX PRO</td><td>$79.00</td><td data-sale-only>$48.98</td></tr>
@@ -376,7 +376,7 @@ footer a:hover { color: var(--orange); }
         <p class="guarantee"><a href="https://eidosedgestudio.com/MatricX-Pro-Page/terms.html#guarantee">30-day support guarantee</a>.</p>
       </div>
     </div>
-    <p class="pricing-note">Checkout on Gumroad.<span data-sale-only> Launch prices use the code MXN38 (38% off), already applied by these links.</span> Choose your tier at checkout.
+    <p class="pricing-note"><span data-gumroad-only>Checkout on Gumroad.</span><span data-sale-only><span data-gumroad-only> Launch prices use the code MXN38 (38% off), already applied by these links.</span><span data-market-only hidden> Launch prices use the 38% launch coupon at checkout.</span></span> Choose your tier at checkout.
       The add-on code is GPL-licensed; the tiers are for developer support and services. The price you pay is the one shown at checkout.</p>
   </section>
 
@@ -437,5 +437,28 @@ footer a:hover { color: var(--orange); }
 </footer>
 
 <script src="assets/sale.js" defer></script>
+<script>
+/* Inside a Blender Market listing (the page is shown in a frame): buy buttons go to the Complete Bundle listing,
+   Gumroad-only wording hides, and links to the rest of the site open in a new tab.
+   BM_BUNDLE_URL is the Complete Bundle on Blender Market (Superhive). Until it is a real link, buttons keep their Gumroad links. */
+(function () {
+  var BM_BUNDLE_URL = "PASTE_BM_BUNDLE_LINK_HERE";
+  var market = BM_BUNDLE_URL.indexOf('https://') === 0 ? BM_BUNDLE_URL : '';
+  var framed = false;
+  try { framed = window.self !== window.top; } catch (e) { framed = true; }
+  if (!framed) return;
+  document.documentElement.classList.add('framed');
+  document.querySelectorAll('[data-gumroad-only]').forEach(function (el) { el.style.display = 'none'; });
+  document.querySelectorAll('[data-market-only]').forEach(function (el) { el.hidden = false; });
+  document.querySelectorAll('a[href]').forEach(function (a) {
+    if (a.href.indexOf('eidosedge.gumroad.com') !== -1) {
+      if (market) a.href = market;
+      a.target = '_blank'; a.rel = 'noopener';
+    } else if (a.hostname === 'eidosedgestudio.com' && a.pathname !== location.pathname) {
+      a.target = '_blank'; a.rel = 'noopener';
+    }
+  });
+})();
+</script>
 </body>
 </html>
