@@ -78,7 +78,8 @@ td code { white-space: nowrap; }
   font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; }
 .shot { margin: 14px 0 20px; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: #000; }
 .shot figcaption { padding: 8px 12px; font-size: 12.5px; color: #8f8f8f; background: #101010; border-top: 1px solid var(--line); }
-.shot.todo { border-style: dashed; border-color: var(--accent-line); }
+/* Screenshot slots waiting for images stay hidden; to fill one, replace it with a normal <figure class="shot"> */
+.shot.todo { display: none; border-style: dashed; border-color: var(--accent-line); }
 .shot.todo .ph { aspect-ratio: 16 / 7; display: flex; align-items: center; justify-content: center; text-align: center; padding: 16px; color: #c98a96;
   font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; background: #120d0e; }
 
@@ -341,5 +342,16 @@ footer a { color: #8a8a8a; }
   &copy; 2024&ndash;2026 Prasanth / Eidos Edge &middot; <a href="https://eidosedgestudio.com/">eidosedgestudio.com</a><br>
   Complete Eidos Edge Bundle &middot; Start Here guide &middot; Handy 1.0, MatricX PRO 2.1, MatricX Bake 1.7.9
 </footer>
+<script>
+/* Inside a Blender Market listing (the page is shown in a frame), links open in a new tab instead of inside the listing. */
+(function () {
+  var framed = false;
+  try { framed = window.self !== window.top; } catch (e) { framed = true; }
+  if (!framed) return;
+  document.querySelectorAll('a[href]').forEach(function (a) {
+    if (a.getAttribute('href').charAt(0) !== '#') { a.target = '_blank'; a.rel = 'noopener'; }
+  });
+})();
+</script>
 </body>
 </html>
