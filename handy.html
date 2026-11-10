@@ -97,17 +97,27 @@ kbd { display: inline-block; padding: 1px 8px; border: 1px solid var(--accent-li
 .ghost:hover { border-color: var(--accent); background: var(--accent-soft); }
 .btn:focus-visible, .ghost:focus-visible, .nav a:focus-visible, .brand:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
-/* Image placeholders: replace each with an <img> (see the PLACEHOLDER comments) */
+/* Media frames: the hero image and the tool recordings */
 .shot { position: relative; display: flex; align-items: center; justify-content: center; text-align: center; padding: 16px; border: 1px dashed var(--accent-line); border-radius: 10px;
   background: linear-gradient(rgba(168,85,247,.05) 1px, transparent 1px) 0 0 / 24px 24px, linear-gradient(90deg, rgba(168,85,247,.05) 1px, transparent 1px) 0 0 / 24px 24px, #111;
   color: #8a7a9e; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: .5px; }
 .shot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 10px; }
-/* Tool demo slots waiting for their GIFs: a calm "coming soon" state */
-.shot.soon { flex-direction: column; gap: 10px; color: #a58bd0; font-size: 11.5px; letter-spacing: 1.5px; text-transform: uppercase;
-  background: radial-gradient(circle at 50% 45%, rgba(168,85,247,.14), transparent 62%), linear-gradient(rgba(168,85,247,.05) 1px, transparent 1px) 0 0 / 24px 24px,
-  linear-gradient(90deg, rgba(168,85,247,.05) 1px, transparent 1px) 0 0 / 24px 24px, #111; }
-.shot.soon .play { width: 38px; height: 38px; fill: none; stroke: var(--accent); stroke-width: 1.4; opacity: .85; }
-.shot.soon .play path { fill: var(--accent); stroke: none; }
+/* Tool demos: real Blender recordings, playing muted on a loop while on screen (script at the end of the page) */
+.shot.vid { padding: 0; border-style: solid; background: #000; }
+.shot.vid video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.shot.vid .chip { position: absolute; top: 8px; left: 8px; padding: 3px 8px; border-radius: 999px; background: rgba(10,10,10,.82); border: 1px solid var(--accent-line);
+  font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #e9dcff; pointer-events: none; }
+.vid-pair { flex: 0 0 42%; display: grid; grid-template-rows: 1fr 1fr; border-right: 1px solid var(--accent-line); }
+.vid-pair .shot.vid { aspect-ratio: 16 / 9; border: none; border-radius: 0; }
+.vid-pair .shot.vid + .shot.vid { border-top: 1px solid var(--accent-line); }
+/* Also in the menu */
+.extras-title { margin-top: 44px; text-align: center; font-size: 26px; }
+.extras { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 18px; }
+.extra { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.extra .shot.vid { aspect-ratio: 16 / 9; border: none; border-bottom: 1px solid var(--accent-line); border-radius: 0; }
+.extra .body { padding: 14px 16px 18px; }
+.extra h4 { font-family: 'Anton', Impact, sans-serif; font-weight: 400; font-size: 19px; text-transform: uppercase; color: var(--head); margin-bottom: 4px; }
+.extra p { color: var(--muted); font-size: 14px; }
 
 /* Hero */
 .hero-logo { display: block; width: 84px; height: 84px; margin: 0 auto 18px; border-radius: 18px; box-shadow: 0 0 0 1px var(--accent-line), 0 14px 40px rgba(168,85,247,.35); }
@@ -143,7 +153,7 @@ kbd { display: inline-block; padding: 1px 8px; border: 1px solid var(--accent-li
 .tool:hover, .plan:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent), 0 22px 60px -12px rgba(168,85,247,.45); }
 .tool .benefit { margin-top: 10px; color: #c9a8f5; font-size: 14px; font-style: italic; }
 .tool .benefit::before { content: "\2192  "; font-style: normal; color: var(--accent); }
-.tool .shot { aspect-ratio: 16 / 10; border: none; border-bottom: 1px dashed var(--accent-line); border-radius: 0; }
+.tool .shot { aspect-ratio: 16 / 9; border: none; border-bottom: 1px solid var(--accent-line); border-radius: 0; }
 .tool .shot img { border-radius: 0; }
 .tool .body { padding: 20px 22px 24px; }
 .tool .head { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
@@ -207,7 +217,9 @@ footer a:hover { color: var(--orange); }
   .tools, .pricing, .story { grid-template-columns: 1fr; }
   .step + .step::before { content: "\2193"; left: 50%; top: -15px; transform: translateX(-50%); }
   .tool.wide { flex-direction: column; }
-  .tool.wide .shot { flex: none; aspect-ratio: 16 / 10; min-height: 0; border-right: none; border-bottom: 1px dashed var(--accent-line); }
+  .tool.wide .shot { flex: none; aspect-ratio: 16 / 9; min-height: 0; border-right: none; border-bottom: 1px solid var(--accent-line); }
+  .vid-pair { flex: none; border-right: none; border-bottom: 1px solid var(--accent-line); }
+  .extras { grid-template-columns: 1fr; }
   .tool.wide .body { padding: 20px 22px 24px; }
 }
 @media (min-width: 861px) and (max-width: 1000px) {
@@ -317,8 +329,7 @@ footer a:hover { color: var(--orange); }
     <div class="tools">
 
       <article class="tool">
-        <!-- PLACEHOLDER: unbevel.gif (16:10). Replace the text inside .shot with <img src="..." alt="..."> -->
-        <div class="shot soon" role="img" aria-label="UnBevel demo coming soon"><svg class="play" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10.5"/><path d="M10 8.2l6 3.8-6 3.8z"/></svg><span>Demo coming soon</span></div>
+        <div class="shot vid"><video src="assets/handy-video/unbevel.mp4" poster="assets/handy-video/unbevel.jpg" width="1280" height="720" muted loop playsinline preload="none" aria-label="UnBevel taking an applied bevel back to a sharp edge in Blender."></video></div>
         <div class="body">
           <div class="head"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20V10l6-6h10"/><path d="M4 4h6M4 4v6" stroke-dasharray="2 2.5"/></svg></span><h3>UnBevel</h3></div>
           <p>Take an applied bevel back to its sharp edge &mdash; or drag to narrow or widen it.</p>
@@ -327,8 +338,7 @@ footer a:hover { color: var(--orange); }
       </article>
 
       <article class="tool">
-        <!-- PLACEHOLDER: smart-inset.gif (16:10) -->
-        <div class="shot soon" role="img" aria-label="Smart Inset demo coming soon"><svg class="play" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10.5"/><path d="M10 8.2l6 3.8-6 3.8z"/></svg><span>Demo coming soon</span></div>
+        <div class="shot vid"><video src="assets/handy-video/smart-inset.mp4" poster="assets/handy-video/smart-inset.jpg" width="1280" height="720" muted loop playsinline preload="none" aria-label="Smart Inset insetting faces beside rounded bevels in Blender."></video></div>
         <div class="body">
           <div class="head"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><rect x="8" y="8" width="8" height="8" rx="2"/></svg></span><h3>Smart Inset</h3></div>
           <p>Inset faces by an even distance without moving their outline, so the bevels and fillets beside them never crowd or shrink.</p>
@@ -337,8 +347,7 @@ footer a:hover { color: var(--orange); }
       </article>
 
       <article class="tool">
-        <!-- PLACEHOLDER: offset-cut.gif (16:10) -->
-        <div class="shot soon" role="img" aria-label="Offset Cut demo coming soon"><svg class="play" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10.5"/><path d="M10 8.2l6 3.8-6 3.8z"/></svg><span>Demo coming soon</span></div>
+        <div class="shot vid"><video src="assets/handy-video/offset-cut.mp4" poster="assets/handy-video/offset-cut.jpg" width="1280" height="720" muted loop playsinline preload="none" aria-label="Offset Cut adding support loops around a Boolean seam in Blender."></video></div>
         <div class="body">
           <div class="head"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12h18"/><path d="M3 7.5h18M3 16.5h18" stroke-dasharray="3 2.5"/></svg></span><h3>Offset Cut</h3></div>
           <p>Support loops on both sides of a Boolean seam, cut like a pipe, so dense and curved seams come out clean.</p>
@@ -347,8 +356,7 @@ footer a:hover { color: var(--orange); }
       </article>
 
       <article class="tool">
-        <!-- PLACEHOLDER: smart-loop.gif (16:10) -->
-        <div class="shot soon" role="img" aria-label="Smart Loop demo coming soon"><svg class="play" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10.5"/><path d="M10 8.2l6 3.8-6 3.8z"/></svg><span>Demo coming soon</span></div>
+        <div class="shot vid"><video src="assets/handy-video/smart-loop.mp4" poster="assets/handy-video/smart-loop.jpg" width="1280" height="720" muted loop playsinline preload="none" aria-label="Smart Loop cutting a loop through triangles and n-gons in Blender."></video></div>
         <div class="body">
           <div class="head"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 4h18v16H3z"/><path d="M3 4l9 8 9-8"/><path d="M3 15h18" stroke-dasharray="3 2"/></svg></span><h3>Smart Loop</h3></div>
           <p>A loop cut that carries on through triangles and n-gons instead of stopping at them.</p>
@@ -357,8 +365,7 @@ footer a:hover { color: var(--orange); }
       </article>
 
       <article class="tool">
-        <!-- PLACEHOLDER: smart-primitive.gif (16:10) -->
-        <div class="shot soon" role="img" aria-label="Smart Primitive demo coming soon"><svg class="play" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10.5"/><path d="M10 8.2l6 3.8-6 3.8z"/></svg><span>Demo coming soon</span></div>
+        <div class="shot vid"><video src="assets/handy-video/smart-primitive.mp4" poster="assets/handy-video/smart-primitive.jpg" width="1280" height="720" muted loop playsinline preload="none" aria-label="Smart Primitive placing and cutting shapes on a surface in Blender."></video></div>
         <div class="body">
           <div class="head"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg></span><h3>Smart Primitive</h3></div>
           <p>Drop a cube, cylinder or sphere on the surface under the mouse, lined up with it. Click to add, Ctrl+Click to cut &mdash; the cutters stay live.</p>
@@ -367,8 +374,7 @@ footer a:hover { color: var(--orange); }
       </article>
 
       <article class="tool">
-        <!-- PLACEHOLDER: select-seam.gif (16:10) -->
-        <div class="shot soon" role="img" aria-label="Select Seam demo coming soon"><svg class="play" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10.5"/><path d="M10 8.2l6 3.8-6 3.8z"/></svg><span>Demo coming soon</span></div>
+        <div class="shot vid"><video src="assets/handy-video/select-seam.mp4" poster="assets/handy-video/select-seam.jpg" width="1280" height="720" muted loop playsinline preload="none" aria-label="Select Seam selecting a Boolean's seam from one edge in Blender."></video></div>
         <div class="body">
           <div class="head"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="12" r="6"/><circle cx="15" cy="12" r="6"/><path d="M12 7v10" stroke-width="2.6"/></svg></span><h3>Select Seam</h3></div>
           <p>Select a Boolean's whole seam from a single edge.</p>
@@ -377,8 +383,7 @@ footer a:hover { color: var(--orange); }
       </article>
 
       <article class="tool wide">
-        <!-- PLACEHOLDER: smart-boolean.gif (16:10) -->
-        <div class="shot soon" role="img" aria-label="Smart Boolean and Safe Edit demo coming soon"><svg class="play" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10.5"/><path d="M10 8.2l6 3.8-6 3.8z"/></svg><span>Demo coming soon</span></div>
+        <div class="vid-pair"><div class="shot vid"><video src="assets/handy-video/smart-boolean.mp4" poster="assets/handy-video/smart-boolean.jpg" width="1280" height="720" muted loop playsinline preload="none" aria-label="Smart Boolean applying and cleaning up Booleans in Blender."></video><span class="chip">Smart Boolean</span></div><div class="shot vid"><video src="assets/handy-video/safe-edit.mp4" poster="assets/handy-video/safe-edit.jpg" width="1280" height="720" muted loop playsinline preload="none" aria-label="Safe Edit applying the object's scale as you enter Edit Mode."></video><span class="chip">Safe Edit</span></div></div>
         <div class="body">
           <div class="head"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="12" height="12" rx="2"/><rect x="9" y="9" width="12" height="12" rx="2"/></svg></span><h3>Smart Boolean &amp; Safe Edit</h3></div>
           <p><b>Smart Boolean</b> applies a mesh's Boolean modifiers, cleans up the result and shades it by angle in one click.
@@ -388,7 +393,21 @@ footer a:hover { color: var(--orange); }
       </article>
 
     </div>
-    <p class="tools-note">Also in the menu: <b>Boolean Cleanup</b>, <b>Circle</b> and <b>Clean Up</b>.</p>
+    <h3 class="extras-title">Also in the menu</h3>
+    <div class="extras">
+      <article class="extra">
+        <div class="shot vid"><video src="assets/handy-video/boolean-cleanup.mp4" poster="assets/handy-video/boolean-cleanup.jpg" width="1280" height="720" muted loop playsinline preload="none" aria-label="Boolean Cleanup merging the seam vertices a Boolean doesn't need."></video></div>
+        <div class="body"><h4>Boolean Cleanup</h4><p>Merges the seam vertices a Boolean doesn't need, on the side you choose.</p></div>
+      </article>
+      <article class="extra">
+        <div class="shot vid"><video src="assets/handy-video/circle.mp4" poster="assets/handy-video/circle.jpg" width="1280" height="720" muted loop playsinline preload="none" aria-label="Circle cutting a circle of edges around selected vertices."></video></div>
+        <div class="body"><h4>Circle</h4><p>Cuts a circle of edges around each selected vertex &mdash; drag for the radius, wheel for the segments.</p></div>
+      </article>
+      <article class="extra">
+        <div class="shot vid"><video src="assets/handy-video/clean-up.mp4" poster="assets/handy-video/clean-up.jpg" width="1280" height="720" muted loop playsinline preload="none" aria-label="Clean Up welding doubles and removing stray geometry."></video></div>
+        <div class="body"><h4>Clean Up</h4><p>Welds doubles, removes slivers and strays, fixes normals, then selects what still needs a look.</p></div>
+      </article>
+    </div>
   </section>
 
   <!-- PRICING -->
@@ -477,5 +496,23 @@ footer a:hover { color: var(--orange); }
 </footer>
 
 <script src="assets/sale.js" defer></script>
+<script>
+(function () {
+  var videos = document.querySelectorAll('.shot.vid video');
+  if (!videos.length) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+    videos.forEach(function (v) { v.controls = true; v.preload = 'metadata'; });
+    return;
+  }
+  var seen = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      var v = entry.target;
+      if (entry.isIntersecting) { v.play().catch(function () { v.controls = true; }); }
+      else { v.pause(); }
+    });
+  }, { threshold: 0.35 });
+  videos.forEach(function (v) { seen.observe(v); });
+})();
+</script>
 </body>
 </html>
