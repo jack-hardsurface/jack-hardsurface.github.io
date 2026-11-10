@@ -62,10 +62,10 @@ section { padding: 80px 0; border-top: 1px solid var(--line); }
 .section-head p { color: #8f8f8f; max-width: 640px; margin: 0 auto; }
 
 /* 1. Urgency banner (sticky) */
-.urgency { position: sticky; top: 0; z-index: 30; display: flex; align-items: center; justify-content: center; min-height: 44px; padding: 8px 16px;
+/* Launch sale banner with a live countdown (assets/sale.js) */
+.urgency { position: sticky; top: 0; z-index: 30; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 4px 8px; min-height: 44px; padding: 8px 16px;
   background: var(--orange); color: #111; text-align: center; font-weight: 800; font-size: 15px; text-decoration: none; letter-spacing: .2px; }
 .urgency:hover { background: var(--orange-hover); }
-.urgency span { text-decoration: underline; text-underline-offset: 3px; margin-left: 8px; white-space: nowrap; }
 .urgency:focus-visible { outline: 3px solid #111; outline-offset: -3px; }
 
 /* Header */
@@ -155,7 +155,7 @@ section { padding: 80px 0; border-top: 1px solid var(--line); }
 .plan h3 { font-size: 26px; margin-bottom: 14px; }
 .plan .price { display: flex; align-items: baseline; justify-content: center; gap: 12px; margin-bottom: 4px; }
 .plan .price .now { font-family: 'Anton', Impact, sans-serif; font-size: 54px; color: var(--head); line-height: 1; }
-.plan .price .was { font-size: 22px; color: #6f6f6f; text-decoration: line-through; font-weight: 600; }
+
 .plan .save { font-family: 'JetBrains Mono', monospace; font-size: 11.5px; font-weight: 700; letter-spacing: 1px; color: var(--green); margin-bottom: 18px; }
 .plan ul { list-style: none; text-align: left; margin: 0 0 24px; flex: 1; border-top: 1px solid var(--line); padding-top: 16px; }
 .plan li { position: relative; padding-left: 24px; margin-bottom: 9px; font-size: 14.5px; color: #cfcfcf; }
@@ -291,6 +291,18 @@ footer a:hover { color: var(--orange); }
 .fam b { display: block; font-family: 'Anton', Impact, sans-serif; font-weight: 400; font-size: 20px; letter-spacing: .5px; text-transform: uppercase; color: var(--head); line-height: 1.15; }
 .fam small { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--acc); }
 @keyframes family-slide { to { transform: translateX(-50%); } }
+.urgency .cd { font-family: 'JetBrains Mono', monospace; font-weight: 700; background: rgba(0,0,0,.18); padding: 2px 8px; border-radius: 4px; white-space: nowrap; }
+/* Hero countdown */
+.countdown { display: flex; flex-direction: column; align-items: center; gap: 8px; margin: 4px 0 2px; }
+.countdown .cd-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #9a9a9a; }
+.cd-blocks { display: flex; gap: 8px; }
+.cd-blocks span { display: flex; flex-direction: column; align-items: center; min-width: 60px; padding: 8px 6px 6px; background: #141414; border: 1px solid #2f2f2f; border-radius: 8px; }
+.cd-blocks b { font-family: 'Anton', Impact, sans-serif; font-weight: 400; font-size: 28px; line-height: 1; color: #fff; }
+.cd-blocks i { margin-top: 4px; font-style: normal; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: #8a8a8a; }
+/* Launch price large, regular price small and struck through underneath */
+.plan .price { flex-direction: column; align-items: center; gap: 4px; }
+.plan .price .was { font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600; color: #7d7d7d; text-decoration: none; letter-spacing: 0; }
+.plan .price .was s { text-decoration-thickness: 2px; }
 @media (prefers-reduced-motion: reduce) {
   .family-track { animation: none; width: auto; justify-content: center; }
   .family-set { flex-wrap: wrap; justify-content: center; padding: 0 16px; }
@@ -359,8 +371,8 @@ footer a:hover { color: var(--orange); }
 <!--   Bake:            https://eidosedge.gumroad.com/l/MatricXBake/MXN38            ($79 -> $48.98) -->
 
 <!-- 1. URGENCY BANNER -->
-<a class="urgency" href="https://eidosedge.gumroad.com/l/MatricXUltimateBundle/MXN38?utm_source=website&amp;utm_medium=banner&amp;utm_campaign=complete_bundle_launch" target="_blank" rel="noopener">
-  &#9889; NEW: Handy + MatricX PRO + MatricX Bake in one Complete Bundle &mdash; $89.28. Save 38%.<span>Get it</span>
+<a class="urgency" href="https://eidosedge.gumroad.com/l/MatricXUltimateBundle/MXN38?utm_source=website&amp;utm_medium=banner&amp;utm_campaign=complete_bundle_launch" target="_blank" rel="noopener" data-sale-only>
+  <span>&#9889; LAUNCH SALE: Save 38% at checkout (Code MXN38)</span> <span>&mdash; Ends in <span class="cd" data-countdown>7d 00h 00m 00s</span></span>
 </a>
 
 <header class="header">
@@ -390,8 +402,9 @@ footer a:hover { color: var(--orange); }
     </div>
 
     <div class="hero-ctas">
-      <a class="btn btn-xl" href="https://eidosedge.gumroad.com/l/MatricXUltimateBundle/MXN38?utm_source=website&amp;utm_medium=hero&amp;utm_campaign=complete_bundle_launch" target="_blank" rel="noopener">Get the Complete Bundle &mdash; $89.28</a>
-      <span class="note">Handy + MatricX PRO + MatricX Bake &middot; launch price, regular $144</span>
+      <a class="btn btn-xl" href="https://eidosedge.gumroad.com/l/MatricXUltimateBundle/MXN38?utm_source=website&amp;utm_medium=hero&amp;utm_campaign=complete_bundle_launch" target="_blank" rel="noopener"><span data-regular="Get the Complete Bundle — $144">Get the Complete Bundle &mdash; $89.28</span></a>
+      <div class="countdown" data-sale-only><span class="cd-label">Launch sale ends in</span><div class="cd-blocks" data-countdown="blocks"><span><b>7</b><i>days</i></span><span><b>00</b><i>hrs</i></span><span><b>00</b><i>min</i></span><span><b>00</b><i>sec</i></span></div></div>
+      <span class="note">Handy + MatricX PRO + MatricX Bake<span data-sale-only> &middot; launch price, regular $144</span></span>
       <span class="guarantee">All three add-ons tested before every release. <a href="https://eidosedgestudio.com/MatricX-Pro-Page/terms.html#guarantee">30-day support guarantee</a>.</span>
       <a class="text-link" href="#pricing">Or buy individually &darr;</a>
     </div>
@@ -536,7 +549,7 @@ footer a:hover { color: var(--orange); }
         <div class="body">
           <div class="tag">Best Value</div>
           <h3>The Complete <span>Eidos Edge Bundle</span></h3>
-          <p>MatricX PRO, MatricX Bake and Handy together &mdash; model, texture and bake, for $36 less than buying all three.</p>
+          <p>MatricX PRO, MatricX Bake and Handy together &mdash; model, texture and bake, <span data-regular="for $58 less than buying all three separately.">for $35.96 less than buying all three at launch prices.</span></p>
           <div class="links">
             <a class="learn" href="bundle.html">Learn More &rarr;</a>
           </div>
@@ -594,8 +607,8 @@ footer a:hover { color: var(--orange); }
         <img class="plan-logo" src="assets/logos/pro.jpg" width="240" height="240" alt="">
         <div class="cat">Texturing</div>
         <h3>MatricX PRO</h3>
-        <div class="price"><span class="now">$49</span><span class="was">$79</span></div>
-        <div class="save">LAUNCH PRICE &middot; SAVE 38%</div>
+        <div class="price"><span class="now" data-regular="$79">$48.98</span><span class="was" data-sale-only>Regular <s>$79</s></span></div>
+        <div class="save" data-sale-only>LAUNCH PRICE &middot; SAVE 38%</div>
         <ul>
           <li><b>70 smart materials</b> <span>(save hours on look-dev)</span></li>
           <li><b>16 imperfection types</b> <span>(wear, dirt and rust in a click)</span></li>
@@ -610,8 +623,8 @@ footer a:hover { color: var(--orange); }
         <img class="plan-logo" src="assets/logos/bake.jpg" width="240" height="240" alt="">
         <div class="cat">Baking</div>
         <h3>MatricX Bake</h3>
-        <div class="price"><span class="now">$49</span><span class="was">$79</span></div>
-        <div class="save">LAUNCH PRICE &middot; SAVE 38%</div>
+        <div class="price"><span class="now" data-regular="$79">$48.98</span><span class="was" data-sale-only>Regular <s>$79</s></span></div>
+        <div class="save" data-sale-only>LAUNCH PRICE &middot; SAVE 38%</div>
         <ul>
           <li><b>One Texture Set</b> <span>(one atlas for a whole model)</span></li>
           <li><b>FBX / GLB export</b> <span>(straight into Unity, Unreal or Godot)</span></li>
@@ -625,8 +638,8 @@ footer a:hover { color: var(--orange); }
         <img class="plan-logo" src="assets/logos/handy.jpg" width="240" height="240" alt="">
         <div class="cat">Modeling &middot; Solo tier</div>
         <h3>Handy</h3>
-        <div class="price"><span class="now">$27.28</span><span class="was">$44</span></div>
-        <div class="save">LAUNCH PRICE &middot; SAVE 38%</div>
+        <div class="price"><span class="now" data-regular="$44">$27.28</span><span class="was" data-sale-only>Regular <s>$44</s></span></div>
+        <div class="save" data-sale-only>LAUNCH PRICE &middot; SAVE 38%</div>
         <ul>
           <li><b>UnBevel &amp; Smart Inset</b> <span>(fix bevels, keep fillets)</span></li>
           <li><b>Offset Cut &amp; Smart Loop</b> <span>(clean loops around booleans)</span></li>
@@ -642,8 +655,8 @@ footer a:hover { color: var(--orange); }
         <div class="premium plan-art"><img src="assets/bundle-cover.jpg" width="1200" height="600" loading="lazy" alt="The Complete Eidos Edge Bundle: Handy, MatricX PRO and MatricX Bake as three books tied with an Eidos Edge ribbon."></div>
         <div class="cat">Modeling &middot; Texturing &middot; Baking</div>
         <h3>The Complete Eidos Edge Bundle</h3>
-        <div class="price"><span class="now">$89.28</span><span class="was">$144</span></div>
-        <div class="save">LAUNCH PRICE &middot; SAVE 38%</div>
+        <div class="price"><span class="now" data-regular="$144">$89.28</span><span class="was" data-sale-only>Regular <s>$144</s></span></div>
+        <div class="save" data-sale-only>LAUNCH PRICE &middot; SAVE 38%</div>
         <ul>
           <li><b>Handy</b> <span>(model it)</span></li>
           <li><b>MatricX PRO</b> <span>(texture it)</span></li>
@@ -655,8 +668,8 @@ footer a:hover { color: var(--orange); }
         <div class="tiers">Creator tier. Pro, Studio and Enterprise tiers on the <a href="bundle.html#pricing">bundle page</a>.</div>
       </div>
     </div>
-    <p class="pricing-note">Checkout on Gumroad. Launch prices use the code MXN38 (38% off), already applied by these links.
-      The Complete Bundle costs $36 less than PRO, Bake and Handy bought separately at these prices.
+    <p class="pricing-note">Checkout on Gumroad.<span data-sale-only> Launch prices use the code MXN38 (38% off), already applied by these links.</span>
+      <span data-regular="The Complete Bundle costs $58 less than PRO, Bake and Handy bought separately.">The Complete Bundle costs $35.96 less than PRO, Bake and Handy bought separately at these prices.</span>
       Launch prices are temporary; the price you pay is the one shown at checkout.</p>
   </section>
 
@@ -697,7 +710,7 @@ footer a:hover { color: var(--orange); }
     <div class="kicker">The Complete Bundle</div>
     <h2>Model It. Texture It. <span class="orange">Ship It.</span></h2>
     <p>Handy, MatricX PRO and MatricX Bake together &mdash; from a raw model to a finished, engine-ready asset.</p>
-    <a class="btn btn-xl" href="https://eidosedge.gumroad.com/l/MatricXUltimateBundle/MXN38?utm_source=website&amp;utm_medium=final_cta&amp;utm_campaign=complete_bundle_launch" target="_blank" rel="noopener">Get the Complete Bundle &mdash; $89.28</a>
+    <a class="btn btn-xl" href="https://eidosedge.gumroad.com/l/MatricXUltimateBundle/MXN38?utm_source=website&amp;utm_medium=final_cta&amp;utm_campaign=complete_bundle_launch" target="_blank" rel="noopener"><span data-regular="Get the Complete Bundle — $144">Get the Complete Bundle &mdash; $89.28</span></a>
     <p class="guarantee">All three add-ons tested before every release. <a href="https://eidosedgestudio.com/MatricX-Pro-Page/terms.html#guarantee">30-day support guarantee</a>.</p>
   </section>
 
@@ -741,7 +754,7 @@ footer a:hover { color: var(--orange); }
 
 <!-- 7. MOBILE BUY BAR -->
 <div class="buybar">
-  <span class="p">Complete Bundle<br><s>$144</s> <b>$89.28</b></span>
+  <span class="p">Complete Bundle<br><s data-sale-only>$144</s> <b data-regular="$144">$89.28</b></span>
   <a class="btn" href="https://eidosedge.gumroad.com/l/MatricXUltimateBundle/MXN38?utm_source=website&amp;utm_medium=sticky_bar&amp;utm_campaign=complete_bundle_launch" target="_blank" rel="noopener">Buy Bundle</a>
 </div>
 
@@ -792,5 +805,6 @@ footer a:hover { color: var(--orange); }
 
 </script>
 
+<script src="assets/sale.js" defer></script>
 </body>
 </html>

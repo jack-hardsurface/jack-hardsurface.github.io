@@ -59,6 +59,24 @@ section { padding: 80px 0; border-top: 1px solid var(--line); }
 kbd { display: inline-block; padding: 1px 8px; border: 1px solid var(--accent-line); border-bottom-width: 2px; border-radius: 5px; background: var(--accent-soft);
   color: var(--head); font-family: 'JetBrains Mono', monospace; font-size: .85em; font-weight: 700; white-space: nowrap; }
 
+/* Launch sale banner with a live countdown (assets/sale.js) */
+.urgency { position: sticky; top: 0; z-index: 30; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 4px 8px; min-height: 44px; padding: 8px 16px;
+  background: var(--orange); color: #111; text-align: center; font-weight: 800; font-size: 15px; text-decoration: none; letter-spacing: .2px; }
+.urgency:hover { background: var(--orange-hover); }
+.urgency:focus-visible { outline: 3px solid #111; outline-offset: -3px; }
+.urgency .cd { font-family: 'JetBrains Mono', monospace; font-weight: 700; background: rgba(0,0,0,.18); padding: 2px 8px; border-radius: 4px; white-space: nowrap; }
+/* Hero countdown */
+.countdown { display: flex; flex-direction: column; align-items: center; gap: 8px; margin: 4px 0 2px; }
+.countdown .cd-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #9a9a9a; }
+.cd-blocks { display: flex; gap: 8px; }
+.cd-blocks span { display: flex; flex-direction: column; align-items: center; min-width: 60px; padding: 8px 6px 6px; background: #141414; border: 1px solid #2f2f2f; border-radius: 8px; }
+.cd-blocks b { font-family: 'Anton', Impact, sans-serif; font-weight: 400; font-size: 28px; line-height: 1; color: #fff; }
+.cd-blocks i { margin-top: 4px; font-style: normal; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: #8a8a8a; }
+/* Launch price large, regular price small and struck through underneath */
+.plan .price { flex-direction: column; align-items: center; gap: 4px; }
+.plan .price .was { font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600; color: #7d7d7d; text-decoration: none; letter-spacing: 0; }
+.plan .price .was s { text-decoration-thickness: 2px; }
+
 /* Header */
 .header { display: flex; align-items: center; gap: 20px; max-width: 1080px; margin: 0 auto; padding: 16px 20px; }
 .brand { display: flex; align-items: center; gap: 10px; color: var(--head); text-decoration: none; font-family: 'Anton', Impact, sans-serif; font-size: 20px; text-transform: uppercase; }
@@ -163,7 +181,6 @@ kbd { display: inline-block; padding: 1px 8px; border: 1px solid var(--accent-li
 .plan h3 { font-size: 26px; margin-bottom: 6px; }
 .plan .for { color: #8f8f8f; font-size: 14px; margin-bottom: 16px; }
 .plan .price { display: flex; align-items: baseline; justify-content: center; gap: 10px; font-family: 'Anton', Impact, sans-serif; font-size: 50px; color: var(--head); line-height: 1; margin-bottom: 6px; }
-.plan .price s { font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 600; color: #6f6f6f; }
 .plan .save { font-family: 'JetBrains Mono', monospace; font-size: 11.5px; font-weight: 700; letter-spacing: 1px; color: var(--accent); margin-bottom: 18px; }
 .plan ul { list-style: none; text-align: left; margin: 0 0 24px; flex: 1; border-top: 1px solid var(--line); padding-top: 16px; }
 .plan li { position: relative; padding-left: 24px; margin-bottom: 9px; font-size: 14.5px; color: #cfcfcf; }
@@ -210,6 +227,10 @@ footer a:hover { color: var(--orange); }
      https://eidosedge.gumroad.com/l/hgmki/MXN38  (Solo $44 -> $27.28, Studio $89 -> $55.18, Commercial $199 -> $123.38).
      Buyers choose the tier at checkout. When the launch offer ends, remove '/MXN38' and update the prices. -->
 
+<a class="urgency" href="https://eidosedge.gumroad.com/l/hgmki/MXN38?utm_source=website&amp;utm_medium=banner&amp;utm_campaign=handy_launch" target="_blank" rel="noopener" data-sale-only>
+  <span>&#9889; LAUNCH SALE: Save 38% at checkout (Code MXN38)</span> <span>&mdash; Ends in <span class="cd" data-countdown>7d 00h 00m 00s</span></span>
+</a>
+
 <header class="header">
   <a class="brand" href="https://eidosedgestudio.com/"><img src="https://eidosedgestudio.com/assets/eidos-edge-logo.png" alt=""> Eidos <span>Edge</span></a>
   <nav class="nav" aria-label="Page sections">
@@ -227,8 +248,9 @@ footer a:hover { color: var(--orange); }
     <h1>Stop fighting topology. <span class="accent">Model faster with 7 surgical tools.</span></h1>
     <p class="sub">Handy fixes Blender's biggest hard-surface modeling flaws. UnBevel, Smart Inset, Offset Cut, and more &mdash; accessible instantly via a lightning-fast <kbd>Ctrl+Shift+H</kbd> menu.</p>
     <div class="hero-ctas">
-      <a class="btn btn-xl" href="https://eidosedge.gumroad.com/l/hgmki/MXN38?utm_source=website&amp;utm_medium=hero&amp;utm_campaign=handy_launch" target="_blank" rel="noopener">Get Handy &mdash; $27.28</a>
-      <span class="note">Launch price, regular $44 &middot; Blender 4.0 and newer &middot; tested on 4.0, 4.5 and 5.2</span>
+      <a class="btn btn-xl" href="https://eidosedge.gumroad.com/l/hgmki/MXN38?utm_source=website&amp;utm_medium=hero&amp;utm_campaign=handy_launch" target="_blank" rel="noopener"><span data-regular="Get Handy — $44">Get Handy &mdash; $27.28</span></a>
+      <div class="countdown" data-sale-only><span class="cd-label">Launch sale ends in</span><div class="cd-blocks" data-countdown="blocks"><span><b>7</b><i>days</i></span><span><b>00</b><i>hrs</i></span><span><b>00</b><i>min</i></span><span><b>00</b><i>sec</i></span></div></div>
+      <span class="note"><span data-sale-only>Launch price, regular $44 &middot; </span>Blender 4.0 and newer &middot; tested on 4.0, 4.5 and 5.2</span>
       <span class="guarantee">Backed by 5,851 automated tests. <a href="https://eidosedgestudio.com/MatricX-Pro-Page/terms.html#guarantee">30-day support guarantee</a>.</span>
     </div>
     <div class="hero-img"><img src="assets/handy-hero.jpg" width="1920" height="960"
@@ -381,9 +403,9 @@ footer a:hover { color: var(--orange); }
     <div class="pricing">
       <div class="plan lead">
         <h3>Solo</h3>
-        <div class="for">For individual artists</div>
-        <div class="price">$27.28 <s>$44</s></div>
-        <div class="save">LAUNCH PRICE &middot; SAVE 38%</div>
+        <div class="for">For individual artists &middot; email support</div>
+        <div class="price"><span class="now" data-regular="$44">$27.28</span><span class="was" data-sale-only>Regular <s>$44</s></span></div>
+        <div class="save" data-sale-only>LAUNCH PRICE &middot; SAVE 38%</div>
         <ul>
           <li>Full Handy 1.0 suite</li>
           <li>Standard email support (48h response)</li>
@@ -394,12 +416,12 @@ footer a:hover { color: var(--orange); }
       </div>
       <div class="plan">
         <h3>Studio</h3>
-        <div class="for">For small teams &amp; freelancers</div>
-        <div class="price">$55.18 <s>$89</s></div>
-        <div class="save">LAUNCH PRICE &middot; SAVE 38%</div>
+        <div class="for">For small teams &middot; priority support &amp; onboarding for up to 5 artists</div>
+        <div class="price"><span class="now" data-regular="$89">$55.18</span><span class="was" data-sale-only>Regular <s>$89</s></span></div>
+        <div class="save" data-sale-only>LAUNCH PRICE &middot; SAVE 38%</div>
         <ul>
           <li>Full Handy 1.0 suite</li>
-          <li>Priority email support (24h response)</li>
+          <li>Priority email support (24h response) for up to 5 artists</li>
           <li>Setup help for every computer in your studio</li>
           <li>1-on-1 onboarding call for your team</li>
         </ul>
@@ -408,21 +430,21 @@ footer a:hover { color: var(--orange); }
       </div>
       <div class="plan">
         <h3>Commercial</h3>
-        <div class="for">For large studios &amp; enterprises</div>
-        <div class="price">$123.38 <s>$199</s></div>
-        <div class="save">LAUNCH PRICE &middot; SAVE 38%</div>
+        <div class="for">For large teams &middot; dedicated support &amp; direct feature requests for up to 15 artists</div>
+        <div class="price"><span class="now" data-regular="$199">$123.38</span><span class="was" data-sale-only>Regular <s>$199</s></span></div>
+        <div class="save" data-sale-only>LAUNCH PRICE &middot; SAVE 38%</div>
         <ul>
           <li>Full Handy 1.0 suite</li>
           <li>Dedicated Discord/Slack support channel with the developer</li>
           <li>Direct feature request priority</li>
-          <li>Support for unlimited users in your organization</li>
+          <li>Support for up to 15 artists in your organization</li>
         </ul>
         <a class="btn" href="https://eidosedge.gumroad.com/l/hgmki/MXN38?utm_source=website&amp;utm_medium=pricing_card&amp;utm_campaign=handy_launch" target="_blank" rel="noopener">Get Commercial</a>
         <p class="guarantee">Backed by 5,851 automated tests. <a href="https://eidosedgestudio.com/MatricX-Pro-Page/terms.html#guarantee">30-day support guarantee</a>.</p>
       </div>
     </div>
     <p class="pricing-note">Handy is GPL-3.0 licensed. You are always free to share and modify the code under the GPL terms. These tiers are for purchasing developer support and team onboarding.<br>
-      Prices in US dollars. Launch prices use the code MXN38 (38% off), already applied by these links; choose your tier at checkout.
+      Prices in US dollars.<span data-sale-only> Launch prices use the code MXN38 (38% off), already applied by these links.</span> Choose your tier at checkout.
       The price you pay is the one shown at checkout.</p>
   </section>
 
@@ -431,7 +453,7 @@ footer a:hover { color: var(--orange); }
     <div class="kicker">Handy for Blender</div>
     <h2>Stop Fighting Topology. <span class="accent">Start Modeling.</span></h2>
     <p>Seven tools, one menu, one shortcut.</p>
-    <a class="btn btn-xl" href="https://eidosedge.gumroad.com/l/hgmki/MXN38?utm_source=website&amp;utm_medium=final_cta&amp;utm_campaign=handy_launch" target="_blank" rel="noopener">Get Handy &mdash; $27.28</a>
+    <a class="btn btn-xl" href="https://eidosedge.gumroad.com/l/hgmki/MXN38?utm_source=website&amp;utm_medium=final_cta&amp;utm_campaign=handy_launch" target="_blank" rel="noopener"><span data-regular="Get Handy — $44">Get Handy &mdash; $27.28</span></a>
     <p class="guarantee">Backed by 5,851 automated tests. <a href="https://eidosedgestudio.com/MatricX-Pro-Page/terms.html#guarantee">30-day support guarantee</a>.</p>
   </section>
 </div>
@@ -454,5 +476,6 @@ footer a:hover { color: var(--orange); }
   </p>
 </footer>
 
+<script src="assets/sale.js" defer></script>
 </body>
 </html>

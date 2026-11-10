@@ -63,6 +63,24 @@ section { padding: 80px 0; border-top: 1px solid var(--line); }
 kbd { display: inline-block; padding: 1px 7px; border: 1px solid #444; border-bottom-width: 2px; border-radius: 5px; background: #1b1b1b; color: var(--head);
   font-family: 'JetBrains Mono', monospace; font-size: .85em; font-weight: 700; white-space: nowrap; }
 
+/* Launch sale banner with a live countdown (assets/sale.js) */
+.urgency { position: sticky; top: 0; z-index: 30; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 4px 8px; min-height: 44px; padding: 8px 16px;
+  background: var(--orange); color: #111; text-align: center; font-weight: 800; font-size: 15px; text-decoration: none; letter-spacing: .2px; }
+.urgency:hover { background: var(--orange-hover); }
+.urgency:focus-visible { outline: 3px solid #111; outline-offset: -3px; }
+.urgency .cd { font-family: 'JetBrains Mono', monospace; font-weight: 700; background: rgba(0,0,0,.18); padding: 2px 8px; border-radius: 4px; white-space: nowrap; }
+/* Hero countdown */
+.countdown { display: flex; flex-direction: column; align-items: center; gap: 8px; margin: 4px 0 2px; }
+.countdown .cd-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #9a9a9a; }
+.cd-blocks { display: flex; gap: 8px; }
+.cd-blocks span { display: flex; flex-direction: column; align-items: center; min-width: 60px; padding: 8px 6px 6px; background: #141414; border: 1px solid #2f2f2f; border-radius: 8px; }
+.cd-blocks b { font-family: 'Anton', Impact, sans-serif; font-weight: 400; font-size: 28px; line-height: 1; color: #fff; }
+.cd-blocks i { margin-top: 4px; font-style: normal; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: #8a8a8a; }
+/* Launch price large, regular price small and struck through underneath */
+.plan .price { flex-direction: column; align-items: center; gap: 4px; }
+.plan .price .was { font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600; color: #7d7d7d; text-decoration: none; letter-spacing: 0; }
+.plan .price .was s { text-decoration-thickness: 2px; }
+
 /* Header */
 .header { display: flex; align-items: center; gap: 20px; max-width: 1080px; margin: 0 auto; padding: 16px 20px; }
 .brand { display: flex; align-items: center; gap: 10px; color: var(--head); text-decoration: none; font-family: 'Anton', Impact, sans-serif; font-size: 20px; text-transform: uppercase; }
@@ -137,7 +155,6 @@ kbd { display: inline-block; padding: 1px 7px; border: 1px solid #444; border-bo
 .plan h3 { font-size: 24px; margin-bottom: 4px; }
 .plan .for { color: #8f8f8f; font-size: 13.5px; margin-bottom: 14px; min-height: 2.6em; }
 .plan .price { display: flex; align-items: baseline; justify-content: center; gap: 8px; flex-wrap: wrap; font-family: 'Anton', Impact, sans-serif; font-size: 40px; color: var(--head); line-height: 1; margin-bottom: 6px; }
-.plan .price s { font-family: 'Inter', sans-serif; font-size: 17px; font-weight: 600; color: #6f6f6f; }
 .plan .save { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 1px; color: var(--accent); margin-bottom: 16px; }
 .plan ul { list-style: none; text-align: left; margin: 0 0 22px; flex: 1; border-top: 1px solid var(--line); padding-top: 14px; }
 .plan li { position: relative; padding-left: 22px; margin-bottom: 8px; font-size: 14px; color: #cfcfcf; }
@@ -198,6 +215,10 @@ footer a:hover { color: var(--orange); }
      Creator $144 -> $89.28, Pro $353 -> $218.86, Studio $821 -> $509.02, Enterprise $2,520 -> $1,562.40. Buyers choose the tier at checkout.
      When the launch offer ends, remove '/MXN38' and update the prices on this page, on the home page and in the Gumroad description. -->
 
+<a class="urgency" href="https://eidosedge.gumroad.com/l/MatricXUltimateBundle/MXN38?utm_source=website&amp;utm_medium=banner&amp;utm_campaign=complete_bundle_launch" target="_blank" rel="noopener" data-sale-only>
+  <span>&#9889; LAUNCH SALE: Save 38% at checkout (Code MXN38)</span> <span>&mdash; Ends in <span class="cd" data-countdown>7d 00h 00m 00s</span></span>
+</a>
+
 <header class="header">
   <a class="brand" href="https://eidosedgestudio.com/"><img src="https://eidosedgestudio.com/assets/eidos-edge-logo.png" alt=""> Eidos <span>Edge</span></a>
   <nav class="nav" aria-label="Page sections">
@@ -216,8 +237,9 @@ footer a:hover { color: var(--orange); }
     <h1>Model It. Texture It. <span class="accent">Bake It.</span></h1>
     <p class="sub"><b>Handy</b>, <b>MatricX PRO</b> and <b>MatricX Bake</b> &mdash; the complete hard-surface pipeline for Blender, from a blockout to a game-ready asset, in one purchase.</p>
     <div class="hero-ctas">
-      <a class="btn btn-xl" href="https://eidosedge.gumroad.com/l/MatricXUltimateBundle/MXN38?utm_source=website&amp;utm_medium=hero&amp;utm_campaign=complete_bundle_launch" target="_blank" rel="noopener">Get the Complete Bundle &mdash; $89.28</a>
-      <span class="note">Launch price, regular $144 &middot; all three add-ons</span>
+      <a class="btn btn-xl" href="https://eidosedge.gumroad.com/l/MatricXUltimateBundle/MXN38?utm_source=website&amp;utm_medium=hero&amp;utm_campaign=complete_bundle_launch" target="_blank" rel="noopener"><span data-regular="Get the Complete Bundle — $144">Get the Complete Bundle &mdash; $89.28</span></a>
+      <div class="countdown" data-sale-only><span class="cd-label">Launch sale ends in</span><div class="cd-blocks" data-countdown="blocks"><span><b>7</b><i>days</i></span><span><b>00</b><i>hrs</i></span><span><b>00</b><i>min</i></span><span><b>00</b><i>sec</i></span></div></div>
+      <span class="note"><span data-sale-only>Launch price, regular $144 &middot; </span>all three add-ons</span>
       <span class="guarantee">All three add-ons tested before every release. <a href="https://eidosedgestudio.com/MatricX-Pro-Page/terms.html#guarantee">30-day support guarantee</a>.</span>
     </div>
     <div class="hero-img"><img src="assets/bundle-hero.jpg" width="1920" height="960"
@@ -277,17 +299,17 @@ footer a:hover { color: var(--orange); }
     </div>
     <div class="value">
       <table>
-        <thead><tr><th>Add-on</th><th>Regular</th><th>Launch (MXN38)</th></tr></thead>
+        <thead><tr><th>Add-on</th><th>Regular</th><th data-sale-only>Launch (MXN38)</th></tr></thead>
         <tbody>
-          <tr><td><span class="dot" style="background:var(--acc-handy)"></span>Handy (Solo)</td><td>$44.00</td><td>$27.28</td></tr>
-          <tr><td><span class="dot" style="background:var(--acc-pro)"></span>MatricX PRO</td><td>$79.00</td><td>$48.98</td></tr>
-          <tr><td><span class="dot" style="background:var(--acc-bake)"></span>MatricX Bake</td><td>$79.00</td><td>$48.98</td></tr>
-          <tr class="sum"><td>Bought separately</td><td>$202.00</td><td>$125.24</td></tr>
-          <tr class="bundle"><td>Complete Bundle (Creator)</td><td>$144.00</td><td>$89.28</td></tr>
+          <tr><td><span class="dot" style="background:var(--acc-handy)"></span>Handy (Solo)</td><td>$44.00</td><td data-sale-only>$27.28</td></tr>
+          <tr><td><span class="dot" style="background:var(--acc-pro)"></span>MatricX PRO</td><td>$79.00</td><td data-sale-only>$48.98</td></tr>
+          <tr><td><span class="dot" style="background:var(--acc-bake)"></span>MatricX Bake</td><td>$79.00</td><td data-sale-only>$48.98</td></tr>
+          <tr class="sum"><td>Bought separately</td><td>$202.00</td><td data-sale-only>$125.24</td></tr>
+          <tr class="bundle"><td>Complete Bundle (Creator)</td><td>$144.00</td><td data-sale-only>$89.28</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="value-note">The bundle saves $58 at regular prices, or $35.96 at launch prices, compared with buying all three separately.</p>
+    <p class="value-note" data-regular="The bundle saves $58 compared with buying all three separately.">The bundle saves $58 at regular prices, or $35.96 at launch prices, compared with buying all three separately.</p>
   </section>
 
   <!-- PRICING: Gumroad's four tiers. Every tier includes all three add-ons; the tiers add support and services.
@@ -301,9 +323,9 @@ footer a:hover { color: var(--orange); }
     <div class="pricing">
       <div class="plan lead">
         <h3>Creator</h3>
-        <div class="for">For individual artists</div>
-        <div class="price">$89.28 <s>$144</s></div>
-        <div class="save">LAUNCH PRICE &middot; SAVE 38%</div>
+        <div class="for">For individual artists &middot; email support</div>
+        <div class="price"><span class="now" data-regular="$144">$89.28</span><span class="was" data-sale-only>Regular <s>$144</s></span></div>
+        <div class="save" data-sale-only>LAUNCH PRICE &middot; SAVE 38%</div>
         <ul>
           <li>Handy, MatricX PRO and MatricX Bake</li>
           <li>Lifetime updates</li>
@@ -314,9 +336,9 @@ footer a:hover { color: var(--orange); }
       </div>
       <div class="plan">
         <h3>Pro</h3>
-        <div class="for">For freelancers</div>
-        <div class="price">$218.86 <s>$353</s></div>
-        <div class="save">LAUNCH PRICE &middot; SAVE 38%</div>
+        <div class="for">For freelancers &middot; priority email support</div>
+        <div class="price"><span class="now" data-regular="$353">$218.86</span><span class="was" data-sale-only>Regular <s>$353</s></span></div>
+        <div class="save" data-sale-only>LAUNCH PRICE &middot; SAVE 38%</div>
         <ul>
           <li>Everything in Creator</li>
           <li>Priority email support</li>
@@ -327,12 +349,12 @@ footer a:hover { color: var(--orange); }
       </div>
       <div class="plan">
         <h3>Studio</h3>
-        <div class="for">For small studios</div>
-        <div class="price">$509.02 <s>$821</s></div>
-        <div class="save">LAUNCH PRICE &middot; SAVE 38%</div>
+        <div class="for">For small studios &middot; onboarding &amp; support for up to 10 artists</div>
+        <div class="price"><span class="now" data-regular="$821">$509.02</span><span class="was" data-sale-only>Regular <s>$821</s></span></div>
+        <div class="save" data-sale-only>LAUNCH PRICE &middot; SAVE 38%</div>
         <ul>
           <li>Everything in Pro</li>
-          <li>Onboarding for your team</li>
+          <li>Onboarding for up to 10 artists</li>
           <li>Custom workflow advice</li>
           <li>Early access to new features</li>
         </ul>
@@ -341,9 +363,9 @@ footer a:hover { color: var(--orange); }
       </div>
       <div class="plan">
         <h3>Enterprise</h3>
-        <div class="for">For large studios</div>
-        <div class="price">$1,562.40 <s>$2,520</s></div>
-        <div class="save">LAUNCH PRICE &middot; SAVE 38%</div>
+        <div class="for">For large studios &middot; support for your whole organization</div>
+        <div class="price"><span class="now" data-regular="$2,520">$1,562.40</span><span class="was" data-sale-only>Regular <s>$2,520</s></span></div>
+        <div class="save" data-sale-only>LAUNCH PRICE &middot; SAVE 38%</div>
         <ul>
           <li>Everything in Studio</li>
           <li>Custom feature requests</li>
@@ -354,7 +376,7 @@ footer a:hover { color: var(--orange); }
         <p class="guarantee"><a href="https://eidosedgestudio.com/MatricX-Pro-Page/terms.html#guarantee">30-day support guarantee</a>.</p>
       </div>
     </div>
-    <p class="pricing-note">Checkout on Gumroad. Launch prices use the code MXN38 (38% off), already applied by these links; choose your tier at checkout.
+    <p class="pricing-note">Checkout on Gumroad.<span data-sale-only> Launch prices use the code MXN38 (38% off), already applied by these links.</span> Choose your tier at checkout.
       The add-on code is GPL-licensed; the tiers are for developer support and services. The price you pay is the one shown at checkout.</p>
   </section>
 
@@ -391,7 +413,7 @@ footer a:hover { color: var(--orange); }
     <div class="kicker">The Complete Bundle</div>
     <h2>From Blockout to <span class="accent">Game-Ready.</span></h2>
     <p>Three add-ons, one pipeline, one purchase.</p>
-    <a class="btn btn-xl" href="https://eidosedge.gumroad.com/l/MatricXUltimateBundle/MXN38?utm_source=website&amp;utm_medium=final_cta&amp;utm_campaign=complete_bundle_launch" target="_blank" rel="noopener">Get the Complete Bundle &mdash; $89.28</a>
+    <a class="btn btn-xl" href="https://eidosedge.gumroad.com/l/MatricXUltimateBundle/MXN38?utm_source=website&amp;utm_medium=final_cta&amp;utm_campaign=complete_bundle_launch" target="_blank" rel="noopener"><span data-regular="Get the Complete Bundle — $144">Get the Complete Bundle &mdash; $89.28</span></a>
     <p class="guarantee">All three add-ons tested before every release. <a href="https://eidosedgestudio.com/MatricX-Pro-Page/terms.html#guarantee">30-day support guarantee</a>.</p>
   </section>
 </div>
@@ -414,5 +436,6 @@ footer a:hover { color: var(--orange); }
   </p>
 </footer>
 
+<script src="assets/sale.js" defer></script>
 </body>
 </html>
