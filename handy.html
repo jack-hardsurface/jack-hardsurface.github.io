@@ -240,7 +240,7 @@ footer a:hover { color: var(--orange); }
      Buyers choose the tier at checkout. When the launch offer ends, remove '/MXN38' and update the prices. -->
 
 <a class="urgency" href="https://eidosedge.gumroad.com/l/hgmki/MXN38?utm_source=website&amp;utm_medium=banner&amp;utm_campaign=handy_launch" target="_blank" rel="noopener" data-sale-only>
-  <span>&#9889; LAUNCH SALE: Save 38% at checkout (Code MXN38)</span> <span>&mdash; Ends in <span class="cd" data-countdown>7d 00h 00m 00s</span></span>
+  <span>&#9889; LAUNCH SALE: Save 38% at checkout<span data-gumroad-only> (Code MXN38)</span></span> <span>&mdash; Ends in <span class="cd" data-countdown>7d 00h 00m 00s</span></span>
 </a>
 
 <header class="header">
@@ -461,7 +461,7 @@ footer a:hover { color: var(--orange); }
       </div>
     </div>
     <p class="pricing-note">Handy is GPL-3.0 licensed. You are always free to share and modify the code under the GPL terms. These tiers are for purchasing developer support and team onboarding.<br>
-      Prices in US dollars.<span data-sale-only> Launch prices use the code MXN38 (38% off), already applied by these links.</span> Choose your tier at checkout.
+      Prices in US dollars.<span data-sale-only><span data-gumroad-only> Launch prices use the code MXN38 (38% off), already applied by these links.</span><span data-market-only hidden> Launch prices use the 38% launch coupon at checkout.</span></span> Choose your tier at checkout.
       The price you pay is the one shown at checkout.</p>
   </section>
 
@@ -494,6 +494,28 @@ footer a:hover { color: var(--orange); }
 </footer>
 
 <script src="assets/sale.js" defer></script>
+<script>
+/* Inside a Blender Market listing (the page is shown in a frame): buy buttons go to the Handy listing,
+   Gumroad-only wording hides, and links to the rest of the site open in a new tab.
+   MARKET is the Handy listing on Blender Market (Superhive). While it is empty, buttons keep their Gumroad links. */
+(function () {
+  var MARKET = '';
+  var framed = false;
+  try { framed = window.self !== window.top; } catch (e) { framed = true; }
+  if (!framed) return;
+  document.documentElement.classList.add('framed');
+  document.querySelectorAll('[data-gumroad-only]').forEach(function (el) { el.style.display = 'none'; });
+  document.querySelectorAll('[data-market-only]').forEach(function (el) { el.hidden = false; });
+  document.querySelectorAll('a[href]').forEach(function (a) {
+    if (a.href.indexOf('eidosedge.gumroad.com') !== -1) {
+      if (MARKET) a.href = MARKET;
+      a.target = '_blank'; a.rel = 'noopener';
+    } else if (a.hostname === 'eidosedgestudio.com' && a.pathname !== location.pathname) {
+      a.target = '_blank'; a.rel = 'noopener';
+    }
+  });
+})();
+</script>
 <script>
 (function () {
   var videos = document.querySelectorAll('.shot.vid video');
