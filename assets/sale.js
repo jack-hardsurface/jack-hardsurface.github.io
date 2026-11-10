@@ -1,7 +1,7 @@
 /* Launch sale countdown for eidosedgestudio.com (home, Handy and bundle pages).
 
-   SALE_END must match the expiry of the MXN38 code on Gumroad. The +05:30 is India time, so the sale ends at the
-   same moment for every visitor, wherever they are. Change only this line to move the deadline.
+   SALE_END must match the expiry of the MXN38 code on Gumroad: 17 Nov 2026, 00:05 GMT-8 = 08:05 UTC (13:35 India time).
+   It is written in UTC (the Z), so the sale ends at the same moment for every visitor. Change only this line to move it.
 
    On the page:
    - [data-countdown]          shows the time left ("6d 23h 59m 59s"); add data-countdown="blocks" for the big hero style.
@@ -9,7 +9,7 @@
    - [data-regular="..."]      swaps its text for the regular price or wording once the sale has ended.
    - links containing /MXN38   lose the code once the sale has ended, so checkout shows the regular price.
    When the sale is over for good, also update the prices written in the HTML itself. */
-var SALE_END = '2026-11-17T23:59:59+05:30';
+var SALE_END = '2026-11-17T08:05:00Z';
 
 (function () {
   var end = new Date(SALE_END).getTime();
