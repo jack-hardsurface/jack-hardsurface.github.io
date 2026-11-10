@@ -35,10 +35,11 @@
   --head: #ffffff;
   --orange: #f26722;
   --orange-hover: #ff8a4c;
-  /* The bundle's accent is gold; each add-on keeps its own colour inside. The main buttons stay orange. */
-  --accent: #ffd700;
-  --accent-soft: rgba(255, 215, 0, .10);
-  --accent-line: rgba(255, 215, 0, .45);
+  /* The bundle's accent is royal red; each add-on keeps its own colour inside. The main buttons stay orange. */
+  --accent: #ef3350;
+  --accent-deep: #a50f25;
+  --accent-soft: rgba(239, 51, 80, .10);
+  --accent-line: rgba(239, 51, 80, .45);
   --acc-pro: #69f0ae;
   --acc-bake: #e0e0e0;
   --acc-handy: #a855f7;
@@ -84,15 +85,15 @@ kbd { display: inline-block; padding: 1px 7px; border: 1px solid #444; border-bo
 .guarantee a:hover { color: var(--head); }
 
 /* Hero */
-.hero { text-align: center; padding: 56px 0 72px; border-top: none; background: radial-gradient(circle at 50% 0, rgba(255,215,0,.12), transparent 60%); }
-.hero-logo { display: block; width: 84px; height: 84px; margin: 0 auto 18px; border-radius: 18px; box-shadow: 0 0 0 1px var(--accent-line), 0 14px 40px rgba(255,215,0,.22); }
+.hero { text-align: center; padding: 56px 0 72px; border-top: none; background: radial-gradient(circle at 50% 0, rgba(239,51,80,.12), transparent 60%); }
+.hero-logo { display: block; width: 84px; height: 84px; margin: 0 auto 18px; border-radius: 18px; box-shadow: 0 0 0 1px var(--accent-line), 0 14px 40px rgba(239,51,80,.22); }
 .hero h1 { font-size: clamp(40px, 7.4vw, 84px); max-width: 960px; margin: 0 auto 22px; }
 .hero h1 .accent { display: block; }
 .hero .sub { font-size: 18.5px; color: var(--muted); max-width: 720px; margin: 0 auto 34px; }
 .hero-ctas { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-bottom: 44px; }
 .hero-ctas .note { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--accent); letter-spacing: 1px; }
 .hero-img { position: relative; left: 50%; width: min(1240px, calc(100vw - 32px)); transform: translateX(-50%); aspect-ratio: 2 / 1; overflow: hidden;
-  border: 1px solid var(--accent-line); border-radius: 14px; background: #0b0b0b; box-shadow: 0 40px 120px rgba(0,0,0,.7), 0 0 100px rgba(255,215,0,.14); }
+  border: 1px solid var(--accent-line); border-radius: 14px; background: #0b0b0b; box-shadow: 0 40px 120px rgba(0,0,0,.7), 0 0 100px rgba(239,51,80,.14); }
 .hero-img img { width: 100%; height: 100%; object-fit: cover; }
 
 /* What's inside: the pipeline, one card per add-on in its own colour */
@@ -123,7 +124,7 @@ kbd { display: inline-block; padding: 1px 7px; border: 1px solid #444; border-bo
 .value thead th { font-family: 'JetBrains Mono', monospace; font-size: 11.5px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #8f8f8f; background: #111; }
 .value tbody td { color: #cfcfcf; }
 .value tr.sum td { color: var(--head); font-weight: 700; }
-.value tr.bundle td { background: #15140e; color: var(--accent); font-weight: 800; font-size: 17px; border-bottom: none; }
+.value tr.bundle td { background: #170b0d; color: var(--accent); font-weight: 800; font-size: 17px; border-bottom: none; }
 .value .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 10px; vertical-align: middle; }
 .value-note { text-align: center; margin-top: 16px; font-size: 13.5px; color: #8a8a8a; }
 
@@ -131,8 +132,8 @@ kbd { display: inline-block; padding: 1px 7px; border: 1px solid #444; border-bo
 .pricing { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
 .plan { display: flex; flex-direction: column; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 28px 20px; text-align: center;
   transition: transform .25s, box-shadow .25s, border-color .25s; }
-.plan:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent), 0 22px 60px -12px rgba(255,215,0,.3); }
-.plan.lead { border: 2px solid var(--accent); background: #15140e; box-shadow: 0 24px 70px rgba(255,215,0,.12); }
+.plan:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent), 0 22px 60px -12px rgba(239,51,80,.3); }
+.plan.lead { border: 2px solid var(--accent); background: #170b0d; box-shadow: 0 24px 70px rgba(239,51,80,.12); }
 .plan h3 { font-size: 24px; margin-bottom: 4px; }
 .plan .for { color: #8f8f8f; font-size: 13.5px; margin-bottom: 14px; min-height: 2.6em; }
 .plan .price { display: flex; align-items: baseline; justify-content: center; gap: 8px; flex-wrap: wrap; font-family: 'Anton', Impact, sans-serif; font-size: 40px; color: var(--head); line-height: 1; margin-bottom: 6px; }
