@@ -27,6 +27,7 @@ var SALE_END = '2026-11-17T08:05:00Z';
   function tick() {
     var left = end - Date.now();
     if (left <= 0) { endSale(); return false; }
+    document.documentElement.classList.add('sale-active');
     var s = Math.floor(left / 1000);
     var d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600), m = Math.floor(s % 3600 / 60), sec = s % 60;
     timers.forEach(function (el) {

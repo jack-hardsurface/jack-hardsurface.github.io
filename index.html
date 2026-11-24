@@ -63,6 +63,7 @@ section { padding: 80px 0; border-top: 1px solid var(--line); }
 
 /* 1. Urgency banner (sticky) */
 /* Launch sale banner with a live countdown (assets/sale.js) */
+html:not(.sale-active) [data-sale-only] { display: none !important; }
 .urgency { position: sticky; top: 0; z-index: 30; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 4px 8px; min-height: 44px; padding: 8px 16px;
   background: var(--orange); color: #111; text-align: center; font-weight: 800; font-size: 15px; text-decoration: none; letter-spacing: .2px; }
 .urgency:hover { background: var(--orange-hover); }
